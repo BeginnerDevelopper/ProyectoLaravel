@@ -26,10 +26,10 @@ class StoreRequest extends FormRequest
         return [
 
             'name' =>'required|string|max:255',
-            'email' => 'required|email|string|max:200', 
-            'nit_number' => 'required|string|max:10|min:10|unique:providers',
+            'email' => 'required|email|string|max:200|unique:providers', 
+            'nit_number' => 'required|string|max:10|min:8|unique:providers',
             'address' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:10|min:10|unique:providers',
+            'phone' => 'required|string|max:12|min:6|unique:providers',
         ];
     }
 

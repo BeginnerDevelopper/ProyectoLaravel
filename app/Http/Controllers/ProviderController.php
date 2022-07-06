@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Provider;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 use App\Http\Requests\Provider\StoreRequest;
 use App\Http\Requests\Provider\UpdateRequest;

@@ -1,13 +1,13 @@
 @extends('layouts.admin')
-@section('title','Gestión de Categorías')
+@section('title','Módulo de Proveedores')
 @section('styles')
 
 @endsection
 @section('create')
 
 <li class="nav-item d-none d-lg-flex">
-    <a class="nav-link" href="{{route('categories.create')}}">
-    <span class="btn btn-primary">Crear nuevo</span>
+    <a class="nav-link" href="{{route('providers.create')}}">
+        <span class="btn btn-primary">Crear nuevo</span>
     </a>
 </li>
 @section('options')
@@ -18,12 +18,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Categorias
+            Proveedores
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Categorias</li>
+                <li class="breadcrumb-item"><a href="{{route('providers.index')}}">Proveedores</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registro de proveedores</li>
             </ol>
         </nav>
     </div>
@@ -31,19 +32,10 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <!-- <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Listar Categorias</h4>
-                    <div class="btn-group">
-                        <h4 class="card-title">
-                            <a href="#">
-                                <i class="fas fa-download"> Exportar</i>
-                            </a>
-                        </h4>
-                    </div>
-                </div> -->
+                    
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Categorias</h4>
+                            <h4 class="card-title">Providers</h4>
                             <!-- Example split danger button -->
                             <!-- Example single danger button -->
                             <div class="btn-group">
@@ -51,7 +43,7 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{route('categories.create')}}" class="dropdown-item" type="button">Agregar</a>
+                                    <a href="{{route('providers.create')}}" class="dropdown-item" type="button">Agregar</a>
                                     <!-- <button class="dropdown-item" type="button">Another action</button>
                                     <button class="dropdown-item" type="button">Something else here</button>
                                      -->
@@ -71,24 +63,25 @@
                                                                 <tr>
                                                                     <th>Id</th>
                                                                     <th>Nombre</th>
-                                                                    <th>Descripción</th>
+                                                                    <th>Correo Electronico</th> 
+                                                                    <th>Teléfono/Celular</th> 
                                                                     <th>Acciones</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($categories as $category)
+                                                                @foreach($providers as $provider)
                                                                 <tr>
-                                                                    <th scope="row">{{$category->id}}</th>
+                                                                    <th scope="row">{{$provider->id}}</th>
                                                                     <td>
-                                                                        <a href="{{ route('categories.show', $category) }}">{{$category->name}}</a>
-
+                                                                        <a href="{{ route('providers.show', $provider) }}">{{$provider->name}}</a>
                                                                     </td>
-                                                                    <td>{{$category->description}}</td>
+                                                                    <td>{{$provider->email}}</td>
+                                                                    <td>{{$provider->phone}}</td>
                                                                     <td style="width: 20%;">
-                                                                        {!! Form::open(['route'=>['categories.destroy', $category],
+                                                                        {!! Form::open(['route'=>['providers.destroy', $provider],
                                                                         'method'=>'DELETE']) !!}
 
-                                                                        <a class="btn btn-outline-info" href="{{route('categories.edit', $category)}}" title="Editar">
+                                                                        <a class="btn btn-outline-info" href="{{route('providers.edit', $provider)}}" title="Editar">
                                                                             <i class="far fa-edit"></i>
                                                                         </a>
 

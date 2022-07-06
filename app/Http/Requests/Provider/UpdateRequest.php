@@ -26,15 +26,18 @@ class UpdateRequest extends FormRequest
         return [
 
             'name' =>'required|string|max:255',
-            'email' => 'required|email|string|unique:providers,email'
+
+            'email' => 'required|email|string|unique:providers,email,'
             .$this->route('provider')->id.'|max:255',
 
-            'nit_number' => 'required|string|min:10|unique:providers,nit_number'
+
+         
+            'nit_number' => 'required|string|min:10|unique:providers,nit_number,'
             .$this->route('provider')->id.'|max:10',
 
             'address' => 'nullable|string|max:200',
-            'phone' => 'required|string|min:10|unique:providers,phone'
-            .$this->route('provider')->id.'|max:10',
+            'phone' => 'required|string|min:6|unique:providers,phone,'
+            .$this->route('provider')->id.'|max:12',
 
 
         ];

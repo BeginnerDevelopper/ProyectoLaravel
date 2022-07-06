@@ -1,13 +1,13 @@
 @extends('layouts.admin')
-@section('title','Gestión de Categorías')
+@section('title','Gestión de Productos')
 @section('styles')
 
 @endsection
 @section('create')
 
 <li class="nav-item d-none d-lg-flex">
-    <a class="nav-link" href="{{route('categories.create')}}">
-    <span class="btn btn-primary">Crear nuevo</span>
+    <a class="nav-link" href="{{route('products.create')}}">
+        <span class="btn btn-primary">Crear nuevo</span>
     </a>
 </li>
 @section('options')
@@ -18,12 +18,13 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Categorias
+            Productos
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Categorias</li>
+                <li class="breadcrumb-item"><a href="{{route('products.index')}}">Productos</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registro de productos</li>
             </ol>
         </nav>
     </div>
@@ -31,19 +32,10 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <!-- <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Listar Categorias</h4>
-                    <div class="btn-group">
-                        <h4 class="card-title">
-                            <a href="#">
-                                <i class="fas fa-download"> Exportar</i>
-                            </a>
-                        </h4>
-                    </div>
-                </div> -->
+                    
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Categorias</h4>
+                            <h4 class="card-title">Products</h4>
                             <!-- Example split danger button -->
                             <!-- Example single danger button -->
                             <div class="btn-group">
@@ -51,7 +43,7 @@
                                     <i class="fas fa-ellipsis-v"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{route('categories.create')}}" class="dropdown-item" type="button">Agregar</a>
+                                    <a href="{{route('products.create')}}" class="dropdown-item" type="button">Agregar</a>
                                     <!-- <button class="dropdown-item" type="button">Another action</button>
                                     <button class="dropdown-item" type="button">Something else here</button>
                                      -->
@@ -69,26 +61,40 @@
                                                         <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                                                             <thead>
                                                                 <tr>
+                                                                     <!-- 'code',
+                                                                        'name' ,       
+                                                                        'stock',
+                                                                        'image',
+                                                                        'sell_price',
+                                                                        'status',
+                                                                        'category_id',
+                                                                        'provider_id', -->
                                                                     <th>Id</th>
                                                                     <th>Nombre</th>
-                                                                    <th>Descripción</th>
+                                                                    <th>Stock</th> 
+                                                                    <th>Precio</th>
+                                                                    <th>Estado</th> 
+                                                                    <th>Categoría</th> 
                                                                     <th>Acciones</th>
+                                                                       
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($categories as $category)
+                                                                @foreach($products as $product)
                                                                 <tr>
-                                                                    <th scope="row">{{$category->id}}</th>
+                                                                    <th scope="row">{{$product->id}}</th>
                                                                     <td>
-                                                                        <a href="{{ route('categories.show', $category) }}">{{$category->name}}</a>
-
+                                                                        <a href="{{ route('products.show', $product) }}">{{$product->name}}</a>
                                                                     </td>
-                                                                    <td>{{$category->description}}</td>
+                                                                    <td>{{$product->stock}}</td>
+                                                                    <td>{{$product->sell_price}}</td>
+                                                                    <td>{{$product->status}}</td>
+                                                                    <td>{{$product->category->name}}</td>
                                                                     <td style="width: 20%;">
-                                                                        {!! Form::open(['route'=>['categories.destroy', $category],
+                                                                        {!! Form::open(['route'=>['products.destroy', $product],
                                                                         'method'=>'DELETE']) !!}
 
-                                                                        <a class="btn btn-outline-info" href="{{route('categories.edit', $category)}}" title="Editar">
+                                                                        <a class="btn btn-outline-info" href="{{route('products.edit', $product)}}" title="Editar">
                                                                             <i class="far fa-edit"></i>
                                                                         </a>
 

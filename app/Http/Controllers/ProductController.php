@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
-use App\Product;
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
@@ -17,8 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::get();
-        return view('admin.product.index', compact('products'));
+        $products = Product::all();
+        //dd($products);
+        //return view('admin.product.index', compact('products'));
+        return view('pruebas', compact('products'));
 
     }
 

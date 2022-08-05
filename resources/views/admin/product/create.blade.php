@@ -63,7 +63,7 @@
                                     <p href="#" class="font-weight-light" target="_blank">Seleccionar archivo</p>
                                 </small>
                             </h4>
-                            <input type="file" name="image" id="image" class="dropify" />
+                            <input type="file" name="picture" id="picture" class="dropify" />
                         </div>
                     </div>
 

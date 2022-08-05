@@ -32,7 +32,7 @@
                             <h4 class="card-title">Productos</h4>
                         </div>
 
-                        {!! Form::model($product,['route' =>['products.update', $product], 'method' => 'PUT']) !!}
+                        {!! Form::model($product,['route' =>['products.update', $product], 'method' => 'PUT', 'files' => true]) !!}
 
                         <div class="form-group col-md-6 mb-3">
                             <label for="name" class="form-label">Nombre *</label>
@@ -73,7 +73,7 @@
                                     <p href="#" class="font-weight-light" target="_blank">Seleccionar archivo</p>
                                 </small>
                             </h4>
-                            <input type="file" name="image" id="image" class="dropify" />
+                            <input type="file" name="picture" id="picture" class="dropify" />
                         </div>
                     </div>
 

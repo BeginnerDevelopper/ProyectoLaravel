@@ -34,8 +34,8 @@ class ProductController extends Controller
 
     public function store(StoreRequest $request)
     {
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/image"), $image_name);
            
@@ -66,8 +66,8 @@ class ProductController extends Controller
 
     public function update(UpdateRequest $request, Product $product)
     {
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/image"), $image_name);
            

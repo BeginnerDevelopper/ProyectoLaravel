@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
 
-        'name' =>'required|unique:products, name,'
+        'name' =>'required|unique:products,name,'
         .$this->route('product')->id.'|max:255',     
         //'image'=>'required|dimension:min_width=100,min_height=200',
         'sell_price'=>'',

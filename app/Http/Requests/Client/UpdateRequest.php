@@ -24,16 +24,16 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-                'name' =>'required|string|max:255',     
-                'dni'=>'required|unique:clients,name,'
-                .$this->route('clients')->id.'|min:10',
-                'nit'=>'required|unique:clients,name,'
-                .$this->route('clients')->id.'|min:10',
-                'address'=>'string|required|max:255',
-                'phone'=>'string|required|unique:clients|name,'
-                .$this->route('clients')->id.'|min:10',
-                'email'=>'string|required|unique:clients|name,'
-                .$this->route('clients')->id.'|min:255',  
+          'name'=>'string|required|max:255',
+          'dni'=>'string|required|unique:clients,dni,'
+          .$this->route('client')->id.'|min:8|max:10',
+          'nit'=>'nullable|string|unique:clients,nit,'
+          .$this->route('client')->id.'|min:11|max:11',
+          'address'=>'nullable|string|max:255',
+          'phone'=>'string|nullable|unique:clients,phone,'
+          .$this->route('client')->id.'|min:7|max:10',
+          'email'=>'string|nullable|unique:clients,email,'
+          .$this->route('client')->id.'|max:255|email:rfc,dns', 
                 ];
     
     }
@@ -48,14 +48,14 @@ class UpdateRequest extends FormRequest
             
             'dni.required' => 'Este campo es requerido.',
             'dni.string' => 'El valor no es correcto.',
-            'dni.max' => 'Solo se permiten 9 carácteres.',
-            'dni.min' => 'Solo se permiten 9 carácteres.',
+            'dni.max' => 'Solo se permiten 10 carácteres.',
+            'dni.min' => 'Solo se permiten 8 carácteres.',
             'dni.unique' => 'El NIT ya se encuentra registrado.',
 
             'nit.required' => 'Este campo es requerido.',
             'nit.string' => 'El valor no es correcto.',
-            'nit.max' => 'Solo se permiten 9 carácteres.',
-            'nit.min' => 'Solo se permiten 9 carácteres.',
+            'nit.max' => 'Solo se permiten 10 carácteres.',
+            'nit.min' => 'Solo se permiten 10 carácteres.',
             'nit.unique' => 'El NIT ya se encuentra registrado.',
 
             'address.max' => 'Solo se permite 255 carácteres.',

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Purchase;
-use App\Provider;
+use App\Models\Purchase;
+use App\Models\Provider;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\Purchase\StoreRequest;
 use App\Http\Requests\Purchase\UpdateRequest;
@@ -18,13 +19,14 @@ class PurchaseController extends Controller
     public function index()
     {
         $purchases = Purchase::get();
-        return view('admin.purchases.index', compact('purchases'));
+        return view('admin.purchase.index', compact('purchases'));
     }
 
     public function create()
     {   
         $providers = Provider::get();
-        return view('admin.purchase.create', compact('providers'));
+        $products = Product::get();
+        return view('admin.purchase.create', compact('providers','products'));
 
     }
 
@@ -52,7 +54,7 @@ class PurchaseController extends Controller
     {   
 
         $providers = Provider::get();
-        return view('admin.purchase.show', compact('purchase'));
+        return view('admin.purchase.edit', compact('purchase'));
     }
 
     public function update(UpdateRequest $request, Purchase $purchase)

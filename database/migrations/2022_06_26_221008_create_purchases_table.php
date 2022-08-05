@@ -21,18 +21,17 @@ class CreatePurchasesTable extends Migration
             $table->foreign('provider_id')->references('id')->on('providers');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
             
             
-            $table->decimal('total');
+            $table->dateTime('purchase_date');
             $table->decimal('tax');//impuesto
+            $table->decimal('total');
 
 
             $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
-            $table->id('status');
 
             
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->timestamps();
             
 

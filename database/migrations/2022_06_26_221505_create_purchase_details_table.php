@@ -24,8 +24,6 @@ class CreatePurchaseDetailsTable extends Migration
             $table->integer('quantity');
             $table->decimal('price');//impuesto
 
-            
-            $table->string('picture');
             $table->timestamps();
 
 

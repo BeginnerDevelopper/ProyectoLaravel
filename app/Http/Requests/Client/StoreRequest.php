@@ -27,12 +27,12 @@ class StoreRequest extends FormRequest
     {
         return [
 
-        'name' =>'required|string|max:255',     
-        'dni'=>'required|unique:clients|max:10',
-        'nit'=>'required|unique:clients|max:10',
-        'address'=>'string|required|max:255',
-        'phone'=>'string|required|unique:clients|max:10',
-        'email'=>'string|required|unique:clients|max::255|email:rfc,dns',
+            'name'=>'string|required|max:255',
+            'dni'=>'string|required|unique:clients|min:8|max:10',
+            'nit'=>'nullable|string|unique:clients|min:10|max:10',
+            'address'=>'nullable|string|max:255',
+            'phone'=>'string|nullable|unique:clients|min:7|max:10',
+            'email'=>'string|nullable|unique:clients|max:255|email:rfc,dns',
         
         ];
     }
@@ -44,17 +44,16 @@ class StoreRequest extends FormRequest
             'name.string' => 'El valor no es correcto.',
             'name.max' => 'Solo se permite 50 carácteres.',
 
-            
             'dni.required' => 'Este campo es requerido.',
             'dni.string' => 'El valor no es correcto.',
-            'dni.max' => 'Solo se permiten 9 carácteres.',
-            'dni.min' => 'Solo se permiten 9 carácteres.',
+            'dni.max' => 'Solo se permiten 10 carácteres.',
+            'dni.min' => 'Solo se permiten 6 carácteres.',
             'dni.unique' => 'El NIT ya se encuentra registrado.',
 
             'nit.required' => 'Este campo es requerido.',
             'nit.string' => 'El valor no es correcto.',
-            'nit.max' => 'Solo se permiten 9 carácteres.',
-            'nit.min' => 'Solo se permiten 9 carácteres.',
+            'nit.max' => 'Solo se permiten 10 carácteres.',
+            'nit.min' => 'Solo se permiten 10 carácteres.',
             'nit.unique' => 'El NIT ya se encuentra registrado.',
 
             'address.max' => 'Solo se permite 255 carácteres.',

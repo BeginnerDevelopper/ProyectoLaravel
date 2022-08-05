@@ -28,7 +28,6 @@ class CreateSalesTable extends Migration
 
 
             $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
-            $table->id('status');
 
             
             $table->string('picture');

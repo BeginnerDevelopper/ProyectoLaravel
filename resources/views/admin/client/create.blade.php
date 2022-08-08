@@ -39,19 +39,24 @@
                             </div>
                             <div class="form-group col-md-6 mb-3">
                               <label for="email" class="form-label">Correo electrónico *</label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@gmail.com" required>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@gmail.com">
                             </div>
                             <div class="form-group col-md-6 mb-3">
-                              <label for="nit_number" class="form-label">#Identificación *</label>
-                              <input type="number" class="form-control" name="nit_number" id="nit_number" aria-describedby="helpId" required>
+                              <label for="dni" class="form-label">Identificación *</label>
+                              <input type="number" class="form-control" name="dni" id="dni" aria-describedby="helpId">
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                              <label for="nit" class="form-label">NIT</label>
+                              <input type="number" class="form-control" name="nit" id="nit" aria-describedby="helpId" >
+                              <small class="text-muted">Este campo es opcional</small>
                             </div>
                             <div class="form-group col-md-6 mb-3">
                               <label for="address" class="form-label">Dirección *</label>
-                              <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId" required>
+                              <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId">
                             </div>
                             <div class="form-group col-md-6 mb-3">
                               <label for="phone" class="form-label">Número de contacto *</label>
-                              <input type="number" class="form-control" name="phone" id="phone"  aria-describedby="helpId" required>
+                              <input type="number" class="form-control" name="phone" id="phone"  aria-describedby="helpId">
                             </div>
 
 

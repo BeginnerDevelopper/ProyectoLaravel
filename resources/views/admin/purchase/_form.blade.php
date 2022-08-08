@@ -17,19 +17,19 @@
 <div class="form-group col-md-6">
     <div class="mb-3 form-floating">
         <label for="tax">IVA</label>
-        <input type="number" name="tax" id="tax" class="form-control" placeholder="%19" required>
+        <input type="number" name="tax" id="tax" class="form-control" placeholder="%19">
     </div>
 </div>
 <div class="form-group col-md-6">
     <div class="mb-3 form-floating">
         <label for="quantity">Cantidad</label>
-        <input type="number" name="quantity" id="quantity" class="form-control" placeholder="0" required>
+        <input type="number" name="quantity" id="quantity" class="form-control">
     </div>
 </div>
 <div class="form-group col-md-6">
     <div class="mb-3 form-floating">
         <label for="price">Precio de compra</label>
-        <input type="number" name="price" id="price" class="form-control" required>
+        <input type="number" name="price" id="price" class="form-control">
     </div>
 </div>
 <div class="form-group mb-4">

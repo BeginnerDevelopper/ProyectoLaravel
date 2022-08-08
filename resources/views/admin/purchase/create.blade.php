@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registrar Compras')
+@section('title','Registrar Ventas')
 @section('styles')
 <style type="text/css">
     .unstyled-button {
@@ -18,41 +18,42 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Nueva Compra
+            Nueva Venta
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">Compras</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de Compra</li>
+                <li class="breadcrumb-item"><a href="{{route('sales.index')}}">Ventas</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registro de Venta</li>
             </ol>
         </nav>
     </div>
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
+                {!! Form::open(['route' => 'sales.store', 'method' => 'POST']) !!}
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Registro de Compra</h4>
+                        <h4 class="card-title">Listar Ventas</h4>
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Compra</h4>
+                            <h4 class="card-title">Formulario obligatorio *</h4>
                         </div>
-                        {!! Form::open(['route' => 'purchases.store', 'method' => 'POST']) !!}
+                        
 
-                        @include('admin.purchase._form')
+                        @include('admin.sale._form')
 
-                        {!! Form::close() !!}
+                      
                     </div>
 
                 </div>
                 <div class="card-footer text-muted">
-                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
-                    <a href="{{route('purchases.index')}}" class="btn btn-outline-danger">Cancelar</a>
-
+                    <button type="submit" id="guardar" class="btn btn-primary mr-2 float-right">Registrar</button>
+                    <a href="{{route('sales.index')}}" class="btn btn-outline-danger">Cancelar</a>
                 </div>
             </div>
+            {!! Form::close() !!}
         </div>
     </div>
 
@@ -79,7 +80,7 @@
             product_id = $("#product_id").val();
             producto = $("#product_id option:selected").text();
             quantity = $("#quantity").val();
-            price = $("#price").val();
+            price =  $("#price").val();
             impuesto = $("#tax").val();
 
 

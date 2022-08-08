@@ -29,7 +29,7 @@ class StoreRequest extends FormRequest
 
             'name'=>'string|required|max:255',
             'dni'=>'string|required|unique:clients|min:8|max:10',
-            'nit'=>'nullable|string|unique:clients|min:10|max:10',
+            'nit'=>'nullable|string|unique:clients|min:11|max:11',
             'address'=>'nullable|string|max:255',
             'phone'=>'string|nullable|unique:clients|min:7|max:10',
             'email'=>'string|nullable|unique:clients|max:255|email:rfc,dns',

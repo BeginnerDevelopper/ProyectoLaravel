@@ -9,7 +9,7 @@ class Purchase extends Model
     protected $fillable = [
         'provider_id',
         'user_id',
-        'pruchase_date',
+        'purchase_date',
         'tax',
         'total',
         'status',
@@ -29,7 +29,7 @@ class Purchase extends Model
 
     public function purchaseDetails()
     {
-        return $this->belongsTo(PurchaseDetails::class);
+        return $this->HasMany(PurchaseDetails::class);
     }
 
 

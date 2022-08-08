@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\SaleDetail;
+use App\Models\SaleDetails;
 use Illuminate\Http\Request;
 
-class SaleDetailController extends Controller
+class SaleDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class SaleDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\SaleDetail  $saleDetail
+     * @param  \App\SaleDetails  $saleDetails
      * @return \Illuminate\Http\Response
      */
-    public function show(SaleDetail $saleDetail)
+    public function show(SaleDetails $saleDetails)
     {
         //
     }
@@ -52,10 +52,10 @@ class SaleDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SaleDetail  $saleDetail
+     * @param  \App\SaleDetails  $saleDetails
      * @return \Illuminate\Http\Response
      */
-    public function edit(SaleDetail $saleDetail)
+    public function edit(SaleDetails $saleDetails)
     {
         //
     }
@@ -64,10 +64,10 @@ class SaleDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SaleDetail  $saleDetail
+     * @param  \App\SaleDetails  $saleDetails
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SaleDetail $saleDetail)
+    public function update(Request $request, SaleDetails $saleDetails)
     {
         //
     }
@@ -75,10 +75,10 @@ class SaleDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SaleDetail  $saleDetail
+     * @param  \App\SaleDetails  $saleDetails
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SaleDetail $saleDetail)
+    public function destroy(SaleDetails $saleDetails)
     {
         //
     }

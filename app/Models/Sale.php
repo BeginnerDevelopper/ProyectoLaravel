@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +28,7 @@ class Sale extends Model
 
     public function SaleDetails()
     {
-        return $this->belongsTo(SaleDetails::class);
+        return $this->HasMany(SaleDetails::class);
     }
 
 

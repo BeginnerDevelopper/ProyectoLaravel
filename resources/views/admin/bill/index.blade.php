@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Gestión de Ventas')
+@section('title','Administración de Facturas')
 @section('styles')
 
 @endsection
@@ -19,12 +19,12 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Ventas
+           Gestión de Facturas
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Módulo Ventas</li>
+                <li class="breadcrumb-item active" aria-current="page">Módulo Facturas</li>
             </ol>
         </nav>
     </div>
@@ -33,17 +33,15 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Listar Ventas</h4>
+                        <h4 class="card-title">Listar facturas</h4>
 
                         <div class="btn-group">
                             <a dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-ellipsis-v"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a href="{{route('sales.create')}}" class="dropdown-item" type="button">Registrar</a>
-                                <!-- <button class="dropdown-item" type="button">Another action</button>
-                                    <button class="dropdown-item" type="button">Something else here</button>
-                                     -->
+                                <a href="{{route('bills.create')}}" class="dropdown-item" type="button">Registrar</a>
+                          
                             </div>
                         </div>
                     </div>
@@ -58,49 +56,42 @@
                                                         <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>Id</th>
+                                                                    <th>N° Factura</th>
+                                                                    <th>Cliente</th>
                                                                     <th>Fecha</th>
+                                                                    <th>Vendedor</th>
+                                                                    <th>IVA</th>
                                                                     <th>Total</th>
-                                                                    <th>Estado</th>
                                                                     <th style="width:150px">Acciones</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach($sales as $sale)
+                                                                @foreach($bills as $bill)
                                                                 <tr>
                                                                     <th scope="row">
-                                                                        <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
+                                                                        <a href="{{route('bills.show', $bill)}}">{{$bill->id}}</a>
                                                                     </th>
-                                                                    <td>{{$sale->sale_date}}</td>
-                                                                    <td>{{number_format($sale->total, 3)}}</td>
-                                                                    @if($sale->status == 'VALID')
-                                                                    <td>
-                                                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" role="button">
-                                                                            Activo <i class="fas fa-check"></i></a>
-                                                                        </a>
-
-                                                                    </td>
-                                                                    @else
-                                                                    <td>
-                                                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" role="button">
-                                                                            Cancelado<i class="fas fa-times"></i></a>
-                                                                    </td>
-                                                                    @endif
-
+                                                                    <td>{{$bill->client->name}}</td>
+                                                                    <td>{{$bill->bill_date}}</td>
+                                                                    <td>{{$bill->user->name}}</td>
+                                                                    <td>{{$bill->tax}}</td>
+                                                                    <td>{{number_format($bill->total, 3)}}</td>
                                                                     <td style="width: 100px;">
-                                                                        <!-- {!! Form::open(['route'=>['sales.destroy', $sale],
-                                                                        'method'=>'DELETE']) !!} -->
+                                                                        {!! Form::open(['route'=>['bills.destroy', $bill],
+                                                                        'method'=>'DELETE']) !!}
 
-                                                                        <!-- <a class="btn btn-success" href="{{route('sales.edit', $sale)}}" title="Editar">
+                                                                        <!-- <a class="btn btn-success" href="{{route('bills.edit', $bill)}}" title="Editar">
                                                                             <i class="far fa-edit"></i>
                                                                         </a> -->
 
-                                                                        <!-- <button class="btn btn-danger jsgrid-button delete-confirm" type="submit" title="Eliminar">
+                                                                        <button class="btn btn-danger jsgrid-button delete-confirm" type="submit" title="Eliminar">
                                                                             <i class="far fa-trash-alt"></i>
-                                                                        </button>  -->
-                                                                        <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                                                        <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
-                                                                        <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                                                        </button> 
+                                                                        {!! Form::close() !!}
+                                                                        
+                                                                        <a href="{{route('bills.pdf', $bill)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
+                                                                        <a href="{{route('bills.print', $bill)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
+                                                                        <a href="{{route('bills.show', $bill)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach

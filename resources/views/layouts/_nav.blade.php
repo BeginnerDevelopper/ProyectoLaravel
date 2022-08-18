@@ -105,6 +105,12 @@
                     </li>
                 </ul>
             </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('bills.index')}}">
+                        <i class="fas fa-file-invoice-dollar menu-icon"></i>
+                        <span class="menu-title">Facturación</span>
+                    </a>
+            </li>
         </li>
         <!-- <li class="nav-item">
             <a class="nav-link" href="https://www.youtube.com/channel/UCMWSlUcDJS00-5pmicciZ_w">

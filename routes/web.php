@@ -48,6 +48,8 @@ Route::resource('sales', 'SaleController')->names('sales');
 
 Route::resource('purchases', 'PurchaseController')->names('purchases');
 
+Route::resource('bills', 'BillController')->names('bills');
+
 //Ocultar algunas rutas del controlador que no se esten empleando 
 //Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
 //     'edit', 'update', 'destroy'
@@ -60,8 +62,12 @@ Route::get('purchases/pdf/{purchase}', 'PurchaseController@pdf')->name('purchase
 
 Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
 
+Route::get('bill/pdf/{bill}', 'BillController@pdf')->name('bills.pdf');
+
 //ruta para imprimir el reporte de ventas
 Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
+
+Route::get('bills/print/{bill}', 'BillController@print')->name('bills.print');
 
 
 
@@ -107,5 +113,4 @@ Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 

@@ -48,9 +48,7 @@ class Purchase extends Model
         $purchase = Purchase::create($request->all() + [
             'user_id' => Auth::user()->id,
             'purchase_date' => Carbon::now('America/Lima'),
-            //'code' => $request->get('code'),
-            
-            
+          
         ]);
         // $purchase->update_stock();
         $purchase->add_purchase_details($request);

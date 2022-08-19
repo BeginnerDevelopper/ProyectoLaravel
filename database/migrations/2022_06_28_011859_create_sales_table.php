@@ -30,7 +30,7 @@ class CreateSalesTable extends Migration
             $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
 
             
-            $table->string('picture');
+            $table->string('picture')->nullable();
             $table->timestamps();
           
         });

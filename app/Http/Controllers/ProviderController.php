@@ -14,6 +14,18 @@ class ProviderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+            $this->middleware('auth'); 
+            $this->middleware('can:providers.create')->only(['create', 'store']); 
+            $this->middleware('can:providers.index')->only(['index']); 
+            $this->middleware('can:providers.edit')->only(['edit','update']); 
+            $this->middleware('can:providers.show')->only(['show']); 
+            $this->middleware('can:providers.destroy')->only(['destroy']);
+
+    }
+
+
     public function index()
     {
         $providers = Provider::get();

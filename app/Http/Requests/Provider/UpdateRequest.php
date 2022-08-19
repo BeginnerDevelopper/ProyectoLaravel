@@ -32,12 +32,12 @@ class UpdateRequest extends FormRequest
 
 
          
-            'nit_number' => 'required|string|min:10|unique:providers,nit_number,'
+            'nit_number' => 'required|string|min:8|unique:providers,nit_number,'
             .$this->route('provider')->id.'|max:10',
 
             'address' => 'nullable|string|max:200',
-            'phone' => 'required|string|min:6|unique:providers,phone,'
-            .$this->route('provider')->id.'|max:12',
+            'phone' => 'required|string|min:7|unique:providers,phone,'
+            .$this->route('provider')->id.'|max:10',
 
 
         ];

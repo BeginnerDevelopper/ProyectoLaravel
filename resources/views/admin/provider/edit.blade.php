@@ -43,7 +43,7 @@
                               <input type="email" class="form-control" name="email" id="email" value="{{($provider->email)}}" aria-describedby="emailHelpId" placeholder="ejemplo@gmail.com" required>
                             </div>
                             <div class="form-group col-md-6 mb-3">
-                              <label for="nit_number" class="form-label">#Identificación *</label>
+                              <label for="nit_number" class="form-label">NIT *</label>
                               <input type="number" class="form-control" name="nit_number" id="nit_number" value="{{($provider->nit_number)}}" aria-describedby="helpId" required>
                             </div>
                             <div class="form-group col-md-6 mb-3">

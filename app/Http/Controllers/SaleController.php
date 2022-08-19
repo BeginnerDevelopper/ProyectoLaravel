@@ -21,9 +21,19 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 class SaleController extends Controller
 {
 
+
     public function __construct()
     {
-        $this->middleware('auth');
+       
+                $this->middleware('auth'); 
+                $this->middleware('can:sales.create')->only(['create', 'store']); 
+                $this->middleware('can:sales.index')->only(['index']); 
+                $this->middleware('can:sales.show')->only(['show']); 
+
+                $this->middleware('can:change.status.sales')->only(['change_status']); 
+                $this->middleware('can:sales.pdf')->only(['pdf']); 
+                $this->middleware('can:sales.print')->only(['print']); 
+                
     }
 
     /**
@@ -78,8 +88,8 @@ class SaleController extends Controller
 
     public function edit(Sale $sale)
     {   
-        $clients = Client::get();
-        return view('admin.sale.show', compact('sale'));
+        // $clients = Client::get();
+        // return view('admin.sale.show', compact('sale'));
     }
 
     public function update(UpdateRequest $request, Sale $sale)
@@ -140,6 +150,7 @@ class SaleController extends Controller
             return redirect()->back();
         } else {
             $sale->update(['status' => 'VALID']);
+            return redirect()->back();
         }
 
 

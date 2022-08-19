@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Bussiness;
+namespace App\Http\Requests\Business;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Bussiness\UpdateRequest;
+use App\Http\Requests\Business\UpdateRequest;
 use App\Models\Business;
 
 class BusinessController extends Controller
 {
+
+    public function __construct()
+    {
+            $this->middleware('auth'); 
+            $this->middleware('can:business.index')->only(['index']); 
+            $this->middleware('can:business.edit')->only(['update']); 
+            
+    }
+
     public function index()
     {
         $business = Business::where('id', 1)->firstOrFail();
@@ -16,7 +25,15 @@ class BusinessController extends Controller
 
     public function update(UpdateRequest $request, Business $business)
     {
-        $business->update($request->all());
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $image_name = time().'_'.$file->getClientOriginalName();
+            $file->move(public_path("/image"), $image_name);
+           
+        }
+        $business->update($request->all()+[
+            'logo' => $image_name,
+        ]);
         return redirect()->route('business.index');
     }
 

@@ -88,7 +88,18 @@
                                                                     </td>
                                                                     <td>{{$product->stock}}</td>
                                                                     <td>{{$product->sell_price}}</td>
-                                                                    <td>{{$product->status}}</td>
+                                                                    @if($product->status == 'ACTIVE')
+                                                                    <td>
+                                                                            <a name="status" id="status" class="btn btn-success" href="{{ route('change.status.products', $product) }}" role="button">
+                                                                            Activo<i class="fas fa-check mr-2"></i></a>
+                                                                        </td>
+                                                                        @else
+                                                                    <td>
+                                                                        <a name="status" id="status" class="btn btn-danger" href="{{ route('change.status.products', $product) }}" role="button">
+                                                                        Desactivado<i class="fas fa-times"></i></a>
+                                                                    
+                                                                    </td>
+                                                                    @endif
                                                                     <td>{{$product->category->name}}</td>
                                                                     <td style="width: 20%;">
                                                                         {!! Form::open(['route'=>['products.destroy', $product],

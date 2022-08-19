@@ -29,29 +29,29 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Proveedores</h4>
+                            <!-- <h4 class="card-title">Proveedores</h4> -->
                         </div>
                                 {!! Form::open(['route' => 'providers.store', 'method' => 'POST']) !!}
 
                             <div class="form-group col-md-6 mb-3">
                               <label for="name" class="form-label">Nombre *</label>
-                              <input type="text" class="form-control" name="name" id="name"  aria-describedby="helpId" required>
+                              <input type="text" class="form-control" name="name" id="name"  aria-describedby="helpId">
                             </div>
                             <div class="form-group col-md-6 mb-3">
                               <label for="email" class="form-label">Correo electrónico *</label>
-                              <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@gmail.com" required>
+                              <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@gmail.com">
                             </div>
                             <div class="form-group col-md-6 mb-3">
-                              <label for="nit_number" class="form-label">#Identificación *</label>
-                              <input type="number" class="form-control" name="nit_number" id="nit_number" aria-describedby="helpId" required>
+                              <label for="nit_number" class="form-label">NIT *</label>
+                              <input type="number" class="form-control" name="nit_number" id="nit_number" aria-describedby="helpId">
                             </div>
                             <div class="form-group col-md-6 mb-3">
                               <label for="address" class="form-label">Dirección *</label>
-                              <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId" required>
+                              <input type="text" class="form-control" name="address" id="address" aria-describedby="helpId">
                             </div>
                             <div class="form-group col-md-6 mb-3">
                               <label for="phone" class="form-label">Número de contacto *</label>
-                              <input type="number" class="form-control" name="phone" id="phone"  aria-describedby="helpId" required>
+                              <input type="number" class="form-control" name="phone" id="phone"  aria-describedby="helpId" >
                             </div>
 
 
@@ -62,8 +62,8 @@
                     
                 </div>
             </div>
+            </div>
         </div>
-    </div>
 
     @endsection
     @section('scripts')

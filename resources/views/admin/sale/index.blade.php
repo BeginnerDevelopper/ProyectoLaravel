@@ -9,9 +9,8 @@
         border: none;
         padding: 0;
         background: none;
-      }
+    }
 </style>
-
 @section('options')
 @endsection
 @section('preference')
@@ -25,7 +24,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Ventas</li>
+                <li class="breadcrumb-item active" aria-current="page">Módulo Ventas</li>
             </ol>
         </nav>
     </div>
@@ -33,33 +32,21 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <!-- <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between">
                         <h4 class="card-title">Listar Ventas</h4>
-                    <div class="btn-group">
-                        <h4 class="card-title">
-                            <a href="#">
-                                <i class="fas fa-download"> Exportar</i>
+
+                        <div class="btn-group">
+                            <a dropdown-toggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
                             </a>
-                        </h4>
-                    </div>
-                </div> -->
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <h4 class="card-title">Ventas</h4>
-                            <!-- Example split danger button -->
-                            <!-- Example single danger button -->
-                            <div class="btn-group">
-                                <a dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-ellipsis-v"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="{{route('sales.create')}}" class="dropdown-item" type="button">Registrar</a>
-                                    <!-- <button class="dropdown-item" type="button">Another action</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a href="{{route('sales.create')}}" class="dropdown-item" type="button">Registrar</a>
+                                <!-- <button class="dropdown-item" type="button">Another action</button>
                                     <button class="dropdown-item" type="button">Something else here</button>
                                      -->
-                                </div>
                             </div>
                         </div>
+                    </div>
                         <div class="table-responsive">
                             <table id="categories_listing" class="table">
                                 <div class="row">
@@ -86,7 +73,20 @@
                                                                     </th>
                                                                     <td>{{$sale->sale_date}}</td>
                                                                     <td>{{$sale->total}}</td>
-                                                                    <td>{{$sale->status}}</td>
+                                                                    @if($sale->status == 'VALID')
+                                                                    <td>
+                                                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" role="button">
+                                                                            Activo <i class="fas fa-check"></i></a>
+                                                                        </a>
+
+                                                                    </td>
+                                                                    @else
+                                                                    <td>
+                                                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" role="button">
+                                                                            Cancelado<i class="fas fa-times"></i></a>
+                                                                    </td>
+                                                                    @endif
+
                                                                     <td style="width: 100px;">
                                                                         <!-- {!! Form::open(['route'=>['sales.destroy', $sale],
                                                                         'method'=>'DELETE']) !!} -->
@@ -97,10 +97,10 @@
 
                                                                         <!-- <button class="btn btn-danger jsgrid-button delete-confirm" type="submit" title="Eliminar">
                                                                             <i class="far fa-trash-alt"></i>
-                                                                        </button> -->
-                                                                                <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                                                                <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
-                                                                                <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+                                                                        </button>  -->
+                                                                        <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
+                                                                        <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
+                                                                        <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach

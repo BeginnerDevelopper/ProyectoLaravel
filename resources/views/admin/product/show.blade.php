@@ -115,12 +115,20 @@
                                             {{$product->sell_price}}
                                         </p>
                                         <hr>
+                                        <strong>
+                                            <i class="fas fa-bar-code mr-1"></i>
+                                            Código de barras</strong>
+                                        <p class="text-muted">
+                                            {!!DNS1D::getBarcodeHTML($product->code, 'C128A'); !!}
+                                        
+                                        </p>
+                                        <hr>
                                         <!-- <strong><i class="fas fa-map-marked-alt mr-1"></i> Categoría</strong>
                                         <p class="text-muted">
                                             {{$product->category->name}}
                                         </p>
                                         <hr>
-                                        <strong><i class="fas fa-map-marked-alt mr-1"></i> Proveedor</strong>
+                                        <--<strong><i class="fas fa-map-marked-alt mr-1"></i> Proveedor</strong>
                                         <p class="text-muted">
                                             {{$product->provider->name}}
                                         </p>

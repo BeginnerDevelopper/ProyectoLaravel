@@ -34,7 +34,7 @@
                 {!! Form::open(['route' => 'sales.store', 'method' => 'POST']) !!}
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Listar Ventas</h4>
+                        <!-- <h4 class="card-title">Listar Ventas</h4> -->
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
@@ -82,6 +82,35 @@
             $("#stock").val(datosProducto[1]);
         }
 
+
+        $(obtener_registro(code));
+                function obtener_registro(code){
+                    ajax({
+                        url: "{{route('get_products_by_barcode')}}",
+                        type: 'GET',
+                        data: {
+                            code: code
+                            
+                        },
+                        success: function(data){
+                            
+                            $("#price").val(data.price);
+                            $("#stock").val(data.stock);
+                        }
+                    });
+                }
+            
+            $(document).on('keyup', '#code', function(){
+
+                    var valorResultado = $(this).val();
+                    if (valorResultado != "") {
+                        obtener_registro(valorResultado);
+                    }else{
+                        obtener_registro();
+                    }
+            });
+
+
         function agregar() {
             datosProducto = document.getElementById('product_id').value.split('_');
 
@@ -92,7 +121,6 @@
             price = $("#price").val();
             stock = $("#stock").val();
             impuesto = $("#tax").val();
-
 
             if (product_id != "" && quantity != "" && quantity > 0 && discount != "" && price != "") {
                 if (parseInt(stock) >= parseInt(quantity)) {

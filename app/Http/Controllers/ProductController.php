@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Provider;
+use App\Milon\Barcode\DNS1D;
+use Picqer;
 
 class ProductController extends Controller
 {
@@ -15,6 +17,21 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+            $this->middleware('auth'); 
+            $this->middleware('can:product.create')->only(['create', 'store']); 
+            $this->middleware('can:product.index')->only(['index']); 
+            $this->middleware('can:product.edit')->only(['edit','update']); 
+            $this->middleware('can:product.show')->only(['show']); 
+            $this->middleware('can:product.destroy')->only(['destroy']);
+
+            $this->middleware('can:change.status.products')->only(['change_status']); 
+            
+    }
+
+
     public function index()
     {
         $products = Product::all();
@@ -44,12 +61,11 @@ class ProductController extends Controller
         $product = Product:: create($request->all()+[
             'image' => $image_name,
         ]);
-      
+ 
         $product->update(['code' =>$product->id]);
         return redirect()->route('products.index');
         
     }
-
  
     public function show(Product $product)
     {
@@ -89,12 +105,22 @@ class ProductController extends Controller
     public function change_status(Product $product)
     {
         if ($product->status == 'ACTIVE') {
-            $product->update(['status'=>'DESACTIVED']);
+            $product->update(['status'=>'DESACTIVATED']);
             return redirect()->back();
         }else{
             $product->update(['status'=>'ACTIVE']);
+            return redirect()->back();
         }
+    }
 
+    public function get_products_by_barcode(Request $request)
+    {
+       if($request->ajax()){
+
+            $products = Product::where('code', $request->code)->firstOrFail();
+            return response()->json($products);
+
+       }
     }
 
 

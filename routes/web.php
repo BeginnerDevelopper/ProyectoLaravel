@@ -19,29 +19,12 @@ Route::get('/', function () {
 });
 
 
-Route::resource('categories', 'CategoryController')->names('categories');
 
-Route::resource('clients', 'ClientController')->names('clients');
+Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
+Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports.date');
 
-Route::resource('products', 'ProductController')->names('products');
+Route::post('sales/report_results','ReportController@report_results')->name('report.results');
 
-Route::resource('providers', 'ProviderController')->names('providers')->except([
-    'edit', 'update', 'destroy'
-]);
-
-Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
-    'edit', 'update', 'destroy'
-]);
-
-Route::resource('sales', 'SaleController')->names('sales');
-
-
-Route::get('purchases/pdf/{purchase}', 'PurchaseController@pdf')->name('purchases.pdf');
-
-Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
-
-//ruta para imprimir el reporte de ventas
-Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
 
 Route::resource('business', 'BusinessController')->names('business')->only([
     'index', 'update'
@@ -51,19 +34,45 @@ Route::resource('printers', 'PrinterController')->names('printers')->only([
     'index', 'update'
 ]);
 
+
+Route::resource('categories', 'CategoryController')->names('categories');
+
+Route::resource('clients', 'ClientController')->names('clients');
+
+Route::resource('products', 'ProductController')->names('products');
+
+Route::resource('providers', 'ProviderController')->names('providers');
+
+Route::resource('sales', 'SaleController')->names('sales');
+
+Route::resource('purchases', 'PurchaseController')->names('purchases');
+
+//Ocultar algunas rutas del controlador que no se esten empleando 
+//Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
+//     'edit', 'update', 'destroy'
+// ]);;
+
+
+
+
+Route::get('purchases/pdf/{purchase}', 'PurchaseController@pdf')->name('purchases.pdf');
+
+Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
+
+//ruta para imprimir el reporte de ventas
+Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');
+
+
+
     Route::get('users/upload/{purchase}', 'PurchaseController@upload')->name('upload.purchases');
 
-    Route::get('change_status/products/{product}', 'ProductController@change_status');
-    Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status');
-    Route::get('change_status/sales/{sale}', 'SaleController@change_status');
+    Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
+    Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status')->name('change.status.purchases');
+    Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
 
-
-    Route::get('sales/reports_day', 'ReportController@reports_day')->name('reports.day');
-    Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports.date');
-
-
-    Route::post('sales/report.results','ReportController@report_results')->name('report.results');
-
+    Route::resource('users', 'UserController')->names('users');
+    //Rol controlador
+    Route::resource('roles', 'RoleController')->names('roles');
 
 
 
@@ -90,7 +99,7 @@ Route::get('productos', 'ProductController@index')->name('products.index');
 
 
 
-
+Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
 
 Auth::routes();
 

@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <table id="categories_listing" class="table">
+                            <table id="purchases_listing" class="table">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="table-responsive">
@@ -86,7 +86,19 @@
                                                                     </th>
                                                                     <td>{{$purchase->purchase_date}}</td>
                                                                     <td>{{$purchase->total}}</td>
-                                                                    <td>{{$purchase->status}}</td>
+                                                                    @if($purchase->status == 'VALID')
+                                                                    <td>
+                                                                        <a class="btn btn-success" href="{{route('change.status.purchases', $purchase)}}" role="button">
+                                                                            Activo <i class="fas fa-check"></i></a>
+                                                                        </a>
+
+                                                                    </td>
+                                                                    @else
+                                                                    <td>
+                                                                        <a class="btn btn-danger" href="{{route('change.status.purchases', $purchase)}}" role="button">
+                                                                            Cancelado<i class="fas fa-times"></i></a>
+                                                                    </td>
+                                                                    @endif
                                                                     <td style="width: 100px;">
                                                                         <!-- {!! Form::open(['route'=>['purchases.destroy', $purchase],
                                                                         'method'=>'DELETE']) !!} -->

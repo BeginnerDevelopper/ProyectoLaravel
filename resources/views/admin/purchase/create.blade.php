@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title','Registrar Ventas')
+@section('title','Registrar Compras')
 @section('styles')
 <style type="text/css">
     .unstyled-button {
@@ -18,20 +18,20 @@
 <div class="content-wrapper">
     <div class="page-header">
         <h3 class="page-title">
-            Nueva Venta
+            Nueva Compra
         </h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb breadcrumb-custom">
                 <li class="breadcrumb-item"><a href="#">Panel administrador</a></li>
-                <li class="breadcrumb-item"><a href="{{route('sales.index')}}">Ventas</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Registro de Venta</li>
+                <li class="breadcrumb-item"><a href="{{route('purchases.index')}}">Compras</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Registro de Compras</li>
             </ol>
         </nav>
     </div>
     <div class="row">
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
-                {!! Form::open(['route' => 'sales.store', 'method' => 'POST']) !!}
+                {!! Form::open(['route' => 'purchases.store', 'method' => 'POST']) !!}
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title">Listar Ventas</h4>
@@ -42,7 +42,7 @@
                         </div>
                         
 
-                        @include('admin.sale._form')
+                        @include('admin.purchase._form')
 
                       
                     </div>

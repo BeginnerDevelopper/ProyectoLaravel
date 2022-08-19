@@ -20,7 +20,15 @@ class PurchaseController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+            $this->middleware('auth'); 
+            $this->middleware('can:purchases.create')->only(['create', 'store']); 
+            $this->middleware('can:purchases.index')->only(['index']); 
+            $this->middleware('can:purchases.show')->only(['show']); 
+
+            $this->middleware('can:change.status.purchases')->only(['change_status']);
+            $this->middleware('can:purchases.pdf')->only(['pdf']);
+            $this->middleware('can:upload.purchases')->only(['upload']);
+
     }
 
     public function index()
@@ -32,7 +40,7 @@ class PurchaseController extends Controller
     public function create()
     {
         $providers = Provider::get();
-        $products = Product::get();
+        $products = Product::where('status','ACTIVE')->get();
         return view('admin.purchase.create', compact('providers', 'products'));
     }
 
@@ -109,6 +117,7 @@ class PurchaseController extends Controller
             return redirect()->back();
         } else {
             $purchase->update(['status' => 'VALID']);
+            return redirect()->back();
         }
     }
 }

@@ -74,6 +74,7 @@
                                             <p align="right">TOTAL:</p>
                                         </th>
                                         <th colspan="4">
+                                            <span ></span>
                                             <p align="right">s/{{number_format($sale->total,3)}}</p>
                                         </th>
                                     </tr>
@@ -89,6 +90,8 @@
                                                 $saleDetail->quantity*$saleDetail->price * 
                                                 $saleDetail->discount/100,3)}}
                                             </td>
+                                       
+                                        
                                     </tr>
                                     @endforeach
                             </table>

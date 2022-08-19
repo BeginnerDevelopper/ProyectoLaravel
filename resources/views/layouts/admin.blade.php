@@ -144,6 +144,8 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     {!! Html::script ('melody/js/dashboard.js') !!}
+    
+
     @yield('scripts')
     <!-- End custom js for this page-->
 </body>

@@ -27,9 +27,9 @@ class StoreRequest extends FormRequest
 
             'name' =>'required|string|max:255',
             'email' => 'required|email|string|max:200|unique:providers', 
-            'nit_number' => 'required|string|max:10|min:8|unique:providers',
+            'nit_number' => 'required|string|min:8|max:10|unique:providers',
             'address' => 'nullable|string|max:255',
-            'phone' => 'required|string|max:12|min:6|unique:providers',
+            'phone' => 'required|string|min:8|max:12|unique:providers',
         ];
     }
 
@@ -49,8 +49,8 @@ class StoreRequest extends FormRequest
 
             'nit_number.required' => 'Este campo es requerido.',
             'nit_number.string' => 'El valor no es correcto.',
-            'nit_number.max' => 'Solo se permiten 9 carácteres.',
-            'nit_number.min' => 'Solo se permiten 9 carácteres.',
+            'nit_number.max' => 'Solo se permiten 10 carácteres.',
+            'nit_number.min' => 'Solo se permiten 10 carácteres.',
             'nit_number.unique' => 'El NIT ya se encuentra registrado.',
 
             'address.max' => 'Solo se permite 255 carácteres.',

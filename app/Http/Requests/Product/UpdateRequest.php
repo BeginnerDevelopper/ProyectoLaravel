@@ -31,6 +31,8 @@ class UpdateRequest extends FormRequest
         'sell_price'=>'',
         'category_id'=>'integer|required|exists:App\Models\Category,id',
         'provider_id'=>'integer|required|exists:App\Models\Provider,id',
+         'code' =>'nullable|string|max:8|min:8',
+
         
         ];
     }
@@ -40,8 +42,11 @@ class UpdateRequest extends FormRequest
           return [
             'name.required' => 'Este campo es requerido.',
             'name.string' => 'El valor no es correcto.',
-            'name.max' => 'Solo se permite 50 carácteres.',
+            'name.max' => 'Solo se permite 50 carácteres.',      
 
+            'code.required' => 'El valor no es correcto.',
+            'code.string' => 'Solo se permite 8 caracteres.',
+            'code.max' => 'Solo se requiere 8 carácteres.',
 
 
             'sell_price.requires' => 'El campo es requerido.',

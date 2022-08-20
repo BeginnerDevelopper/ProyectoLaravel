@@ -101,6 +101,8 @@ Route::get('productos', 'ProductController@index')->name('products.index');
 
 Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
 
+Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

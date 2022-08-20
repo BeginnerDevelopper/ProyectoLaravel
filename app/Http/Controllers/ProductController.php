@@ -62,13 +62,23 @@ class ProductController extends Controller
             'image' => $image_name,
         ]);
  
-        $product->update(['code' =>$product->id]);
+        if ($request->code == "") {
+            
+            $numero = $product->id;
+            $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
+            $product->update(['code' =>$numeroConCeros]);    
+        }
+        
         return redirect()->route('products.index');
         
     }
  
     public function show(Product $product)
     {
+        // $numero = 500;
+        // $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
+
+        // dd($numeroConCeros);
         return view('admin.product.show', compact('product'));
     }
 
@@ -118,6 +128,16 @@ class ProductController extends Controller
        if($request->ajax()){
 
             $products = Product::where('code', $request->code)->firstOrFail();
+            return response()->json($products);
+
+       }
+    }
+
+    public function get_products_by_id(Request $request)
+    {
+       if($request->ajax()){
+
+            $products = Product::firstOrFail($request->$product_id);
             return response()->json($products);
 
        }

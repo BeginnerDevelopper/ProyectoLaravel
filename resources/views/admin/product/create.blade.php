@@ -37,6 +37,11 @@
                             <label for="name" class="form-label">Nombre *</label>
                             <input type="text" class="form-control" name="name" id="name" required>
                         </div>
+                        <div class="form-group col-md-8">
+                            <label for="code">Código de Barras</label>
+                            <input id="code" class="form-control" type="text" name="code">
+                            <small class="text-muted">Este campo es opcional</small>
+                        </div>
                         <div class="form-group col-md-6 mb-3">
                             <label for="sell_price" class="form-label">Precio *</label>
                             <input type="text" class="form-control" name="sell_price" id="sell_price" required>

@@ -34,7 +34,7 @@
                 {!! Form::open(['route' => 'purchases.store', 'method' => 'POST']) !!}
                 <div class="card-body">
                     <div class="d-flex justify-content-between">
-                        <h4 class="card-title">Listar Ventas</h4>
+                        <!-- <h4 class="card-title">Listar Ventas</h4> -->
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-between">

@@ -1,3 +1,8 @@
+<div class="form-group col-md-8">
+    <label for="code">Código de Barras</label>
+    <input id="code" class="form-control" type="text" name="code">
+    <small class="text-muted">Este campo es opcional</small>
+</div>
 <div class="form-group col-md-6">
     <label for="provider_id">Proveedor</label>
     <select id="provider_id" class="form-control" name="provider_id">
@@ -14,10 +19,13 @@
         @endforeach
     </select>
 </div>
-<div class="form-group col-md-6">
-    <div class="mb-3 form-floating">
-        <label for="tax">IVA</label>
-        <input type="number" name="tax" id="tax" class="form-control" placeholder="%19">
+<div class="form-group col-md-3">
+    <label for="tax">IVA</label>
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">%</span>
+        </div>
+        <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3" value="18">
     </div>
 </div>
 <div class="form-group col-md-6">
@@ -72,7 +80,8 @@
                     </th>
                     <th>
                         <p align="right"><span align="right" id="total_pagar_html">$ 0.000</span>
-                         <input type="hidden" name="total" id="total_pagar"></p>
+                            <input type="hidden" name="total" id="total_pagar">
+                        </p>
                     </th>
                 </tr>
             </tfoot>

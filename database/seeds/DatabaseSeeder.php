@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(BusinessTableSeeder::class);
         $this->call(PrinterTableSeeder::class);
+
     }
 }

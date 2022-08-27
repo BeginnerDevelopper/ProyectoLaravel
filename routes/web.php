@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -106,3 +107,5 @@ Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+

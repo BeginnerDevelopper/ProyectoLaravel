@@ -13,4 +13,13 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+
+    /*<---PRUEBAS UNITARIAS -->*/
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+        $this->attributes['description'] = strtolower($value);
+    }
+
 }

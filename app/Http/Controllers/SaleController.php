@@ -8,8 +8,6 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
 use PDF;
 
 
@@ -55,21 +53,10 @@ class SaleController extends Controller
 
     }
 
-    public function store(StoreRequest $request)
+    public function store(StoreRequest $request, Sale $sale)
     {
-        $sale = Sale::create($request->all()+[
-                'user_id'=> Auth::user()->id,
-                'sale_date'=>Carbon::now('America/Lima'),
-
-        ]);
-        foreach ($request->product_id as $key => $product ) {
-            
-            $results[] = array("product_id" => $request->product_id[$key], 
-            "quantity"=>$request->quantity[$key], "price"=>$request->price[$key],
-            "discount"=>$request->discount[$key]);
-        }
-        $sale->saleDetails()->createMany($results);
-
+      
+        $sale->my_sale($request); //funcion que se puede manipula desde el modelo
         return redirect()->route('sales.index');
     }
 

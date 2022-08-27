@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Sale extends Model
 {
@@ -31,5 +33,39 @@ class Sale extends Model
         return $this->HasMany(SaleDetails::class);
     }
 
+    public function update_stock($id, $quantity)
+    {
+        $product = Product::find($id);
+        $product->subtract_stock($quantity);
+
+    }
+
+    public function my_sale($request)
+    {
+        $sale = self::create($request->all()+[
+            'user_id'=> Auth::user()->id,
+            'sale_date'=>Carbon::now('America/Lima'),
+
+    ]);
+
+    $sale->add_sale_details($request);
+    }
+
+   public function add_sale_details($request)
+   {
+
+    foreach ($request->product_id as $key => $product ) {
+        
+        $this->update_stock($request->product_id[$key], $request->quantity[$key]);
+        $results[] = array("product_id" => $request->product_id[$key], 
+        "quantity"=>$request->quantity[$key], "price"=>$request->price[$key],
+        "discount"=>$request->discount[$key]);
+
+    }
+
+        $this->saleDetails()->createMany($results);
+
+
+   }
 
 }

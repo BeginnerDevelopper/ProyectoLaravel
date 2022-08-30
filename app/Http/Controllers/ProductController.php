@@ -8,7 +8,7 @@ use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Provider;
 use App\Milon\Barcode\DNS1D;
-use Picqer;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -45,6 +45,9 @@ class ProductController extends Controller
     {   
         $categories = Category::get();
         $providers = Provider::get();
+
+       // Alert::toast('Producto registrado', 'success');
+
         return view('admin.product.create', compact('categories', 'providers'));
 
     }

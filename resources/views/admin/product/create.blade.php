@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group col-md-8">
                             <label for="code">Código de Barras</label>
-                            <input id="code" class="form-control" type="text" name="code">
+                            <input id="code" class="form-control" type="number" name="code">
                             <small class="text-muted">Este campo es opcional</small>
                         </div>
                         <div class="form-group col-md-6 mb-3">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
+                    <button type="submit" class="btn btn-primary mr-2 btn-confirm">Registrar</button>
                     <a href="{{route('products.index')}}" class="btn btn-outline-danger">Cancelar</a>
                     {!! Form::close() !!}
                 </div>
@@ -86,4 +86,27 @@
 @section('scripts')
 {{!! Html::script('melody/js/data-table.js') !!}
     {{!! Html::script('melody/js/dropify.js') !!}
+
+    <script>
+                                           $('.btn-confirm').click(function(event) {
+
+                                            var form = $(this).closest("form");
+                                            var name = $(this).data("name");   
+                                            event.preventDefault();
+                                            swal({
+                                                title: 'Producto registrado con éxito',
+                                                icon: 'success',
+                                                buttons: true,
+                                                dangerMode: true,
+                                            })
+                                             
+                                            .then((willRegister) => {
+                                                if (willRegister) {
+                                                    form.submit();
+                                                }
+                                            }); 
+
+                                            });   
+
+             </script>
                                 @endsection

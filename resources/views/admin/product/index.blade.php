@@ -32,7 +32,7 @@
         <div class="col-lg-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    
+
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <h4 class="card-title">Products</h4>
@@ -61,7 +61,7 @@
                                                         <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                                                             <thead>
                                                                 <tr>
-                                                                     <!-- 'code',
+                                                                    <!-- 'code',
                                                                         'name' ,       
                                                                         'stock',
                                                                         'image',
@@ -71,12 +71,12 @@
                                                                         'provider_id', -->
                                                                     <th>Id</th>
                                                                     <th>Nombre</th>
-                                                                    <th>Stock</th> 
+                                                                    <th>Stock</th>
                                                                     <th>Precio</th>
-                                                                    <th>Estado</th> 
-                                                                    <th>Categoría</th> 
+                                                                    <th>Estado</th>
+                                                                    <th>Categoría</th>
                                                                     <th>Acciones</th>
-                                                                       
+
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -90,14 +90,14 @@
                                                                     <td>{{$product->sell_price}}</td>
                                                                     @if($product->status == 'ACTIVE')
                                                                     <td>
-                                                                            <a name="status" id="status" class="btn btn-success" href="{{ route('change.status.products', $product) }}" role="button">
+                                                                        <a name="status" id="status" class="btn btn-success" href="{{ route('change.status.products', $product) }}" role="button">
                                                                             Activo<i class="fas fa-check mr-2"></i></a>
-                                                                        </td>
-                                                                        @else
+                                                                    </td>
+                                                                    @else
                                                                     <td>
                                                                         <a name="status" id="status" class="btn btn-danger" href="{{ route('change.status.products', $product) }}" role="button">
-                                                                        Desactivado<i class="fas fa-times"></i></a>
-                                                                    
+                                                                            Desactivado<i class="fas fa-times"></i></a>
+
                                                                     </td>
                                                                     @endif
                                                                     <td>{{$product->category->name}}</td>
@@ -109,7 +109,8 @@
                                                                             <i class="far fa-edit"></i>
                                                                         </a>
 
-                                                                        <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
+                                                                        <button class="btn btn-outline-danger delete-confirm" id="name" name="name" type="submit" title="Eliminar" 
+                                                                        data-name="{{ $product->name }}">
                                                                             <i class="far fa-trash-alt"></i>
                                                                         </button>
 
@@ -128,4 +129,27 @@
                                 @endsection
                                 @section('scripts')
                                 {{!! Html::script('melody/js/data-table.js') !!}
+                                    <script>
+                                           $('.delete-confirm').click(function(event) {
+
+                                            var form = $(this).closest("form");
+                                            var name = $(this).data("name");   
+                                            event.preventDefault();
+                                            swal({
+                                                title: 'Estas seguro de eliminar ${name}?',
+                                                text: 'No podrá revertir cambios',
+                                                icon: 'warning',
+                                                buttons: true,
+                                                dangerMode: true,
+                                            })
+                                             
+                                            .then((willDelete) => {
+                                                if (willDelete) {
+                                                    form.submit();
+                                                }
+                                            }); 
+
+                                            });   
+
+                                    </script>
                                 @endsection

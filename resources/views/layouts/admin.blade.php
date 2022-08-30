@@ -144,6 +144,8 @@
     {!! Html::script('melody/js/misc.js') !!}
     {!! Html::script('melody/js/settings.js') !!}
     {!! Html::script('melody/js/todolist.js') !!}
+    
+    @include('sweetalert::alert')
     <!-- endinject -->
     <!-- Custom js for this page-->
     {!! Html::script('melody/js/dashboard.js') !!}

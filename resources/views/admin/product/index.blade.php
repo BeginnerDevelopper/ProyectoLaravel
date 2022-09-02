@@ -109,9 +109,12 @@
                                                                             <i class="far fa-edit"></i>
                                                                         </a>
 
-                                                                        <button class="btn btn-outline-danger delete-confirm" id="name" name="name" type="submit" title="Eliminar" data-name="{{ $product->name }}">
+                                                                        <button class="btn btn-outline-danger delete-confirm" type="submit" 
+                                                                        title="Eliminar" data-name="{{ $product->name }}">
                                                                             <i class="far fa-trash-alt"></i>
                                                                         </button>
+
+                                                                        {!! Form::close() !!}
 
                                                                     </td>
                                                                 </tr>
@@ -135,7 +138,7 @@
                                             var name = $(this).data("name");   
                                             event.preventDefault();
                                             swal({
-                                                title: 'Estas seguro de eliminar este producto?',
+                                                title: 'Estas seguro de eliminar ${name}?',
                                                 text: 'No podrá revertir cambios',
                                                 icon: 'warning',
                                                 buttons: true,

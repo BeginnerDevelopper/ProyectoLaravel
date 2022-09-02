@@ -38,6 +38,7 @@ class ProductController extends Controller
         //dd($products);
         return view('admin.product.index', compact('products'));
         //return view('pruebas', compact('products'));
+        
 
     }
 
@@ -46,8 +47,8 @@ class ProductController extends Controller
         $categories = Category::get();
         $providers = Provider::get();
 
-       // Alert::toast('Producto registrado', 'success');
-
+       // Alert::toast('Producto registrado con éxito', 'success');
+        
         return view('admin.product.create', compact('categories', 'providers'));
 
     }
@@ -71,6 +72,8 @@ class ProductController extends Controller
             $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
             $product->update(['code' =>$numeroConCeros]);    
         }
+        
+        Alert()->success('Producto registrado con éxito');
         
         return redirect()->route('products.index');
         

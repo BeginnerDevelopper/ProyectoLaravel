@@ -47,7 +47,8 @@ class ProductTest extends TestCase
                  ->assertJson(["name" => "Xbox One"])
                  ->assertStatus([201]);
 
-        $this->assertDatabaseHas('products', ["name" => "Xbox One", "stock" => 160, "image" => "none", "sell_price" => 1200]);
+        $this->assertDatabaseHas('products', ["name" => "Xbox One", "stock" => 160, "image" => 
+        "none", "sell_price" => 1200]);
                  
     }
     /** @test */
@@ -59,7 +60,8 @@ class ProductTest extends TestCase
 
          $response->assertJsonStructure([
             'data' => [
-                '*' => ['code', 'name', 'stock', 'image', 'sell_price', 'status', 'created_at', 'updated_at']
+                '*' => ['code', 'name', 'stock', 'image', 'sell_price',
+                 'status', 'created_at', 'updated_at']
                 ]
                 
             ])->assertStatus(200);

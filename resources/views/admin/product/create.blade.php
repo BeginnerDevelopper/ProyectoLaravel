@@ -72,7 +72,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary mr-2 btn-confirm">Registrar</button>
+                    <button type="submit" class="btn btn-primary mr-2">Registrar</button>
                     <a href="{{route('products.index')}}" class="btn btn-outline-danger">Cancelar</a>
                     {!! Form::close() !!}
                 </div>
@@ -86,27 +86,4 @@
 @section('scripts')
 {{!! Html::script('melody/js/data-table.js') !!}
     {{!! Html::script('melody/js/dropify.js') !!}
-
-    <script>
-                                           $('.btn-confirm').click(function(event) {
-
-                                            var form = $(this).closest("form");
-                                            var name = $(this).data("name");   
-                                            event.preventDefault();
-                                            swal({
-                                                title: 'Producto registrado con éxito',
-                                                icon: 'success',
-                                                buttons: true,
-                                                dangerMode: true,
-                                            })
-                                             
-                                            .then((willRegister) => {
-                                                if (willRegister) {
-                                                    form.submit();
-                                                }
-                                            }); 
-
-                                            });   
-
-             </script>
-                                @endsection
+     @endsection

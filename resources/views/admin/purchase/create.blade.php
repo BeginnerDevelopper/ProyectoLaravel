@@ -50,7 +50,7 @@
                 </div>
                 <div class="card-footer text-muted">
                     <button type="submit" id="guardar" class="btn btn-primary mr-2 float-right">Registrar</button>
-                    <a href="{{route('sales.index')}}" class="btn btn-outline-danger">Cancelar</a>
+                    <a href="{{route('purchases.index')}}" class="btn btn-outline-danger">Cancelar</a>
                 </div>
             </div>
             {!! Form::close() !!}
@@ -74,6 +74,14 @@
         subtotal = [];
 
         $("#guardar").hide();
+        $('#product_id').change(mostrarValores);
+
+        function mostrarValores() {
+            datosProducto = document.getElementById('product_id').value.split('_');
+            $("#code").val(datosProducto[1]); 
+            $("#price").val(datosProducto[2]); 
+        }
+        //var product_id = $('#product_id');
 
         function agregar() {
 

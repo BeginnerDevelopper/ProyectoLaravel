@@ -11,6 +11,7 @@ use App\Http\Requests\Purchase\StoreRequest;
 use App\Http\Requests\Purchase\UpdateRequest;
 use App\Models\PurchaseDetails;
 use PDF;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 
@@ -45,8 +46,11 @@ class PurchaseController extends Controller
 
     public function store(StoreRequest $request, Purchase $purchase)
     {
+        //dd($request->all());
         $purchase->my_store($request);
+        Alert::toast('Compra realizada con éxito', 'success');
         return redirect()->route('purchases.index');
+
 
     }
 

@@ -30,7 +30,6 @@ class CreatePurchasesTable extends Migration
 
             $table->enum('status', ['VALID', 'CANCELED'])->default('VALID');
 
-            
             $table->string('picture')->nullable();
             $table->timestamps();
             

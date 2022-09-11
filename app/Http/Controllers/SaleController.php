@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
 use PDF;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 use Mike42\Escpos\PrinterConnectors\FilePrintConnextor;
 use Mike42\Escpos\Printer;
@@ -57,6 +57,7 @@ class SaleController extends Controller
     {
       
         $sale->my_sale($request); //funcion que se puede manipula desde el modelo
+        Alert::toast('Venta realizada con éxito', 'success');
         return redirect()->route('sales.index');
     }
 

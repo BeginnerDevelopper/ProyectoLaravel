@@ -41,29 +41,41 @@ class Purchase extends Model
 
     }
 
+    //funcion del controlador Purchase
     public function my_store($request)
     {
+
         $purchase = Purchase::create($request->all() + [
             'user_id' => Auth::user()->id,
             'purchase_date' => Carbon::now('America/Lima'),
+            //'code' => $request->get('code'),
+            
+            
         ]);
-       // $purchase->update_stock();
+        // $purchase->update_stock();
         $purchase->add_purchase_details($request);
        
     }
 
-    public function add_purchase_details($request)
-    {
+     public function add_purchase_details($request)
+     {
         foreach ($request->product_id as $key => $id) {
             
             $this->update_stock($request->product_id[$key], $request->quantity[$key]);
+            $arr = explode('_',$request->product_id[$key]);
+             //explode funciona para separar argumentos o parametros de tipo string en un arreglo. por ejemplo explode ("-", "2022-19-01")
 
+            //dd($arr[0]);
+            //$request->product_id[$key]
             $results[] = array(
-                "product_id" => $request->product_id[$key],
+                "product_id" => $arr[0],
                 "quantity" => $request->quantity[$key], "price" => $request->price[$key]
-            );
+           );
         }
+        //dd($results);
         $this->purchaseDetails()->createMany($results);
     }
+
+   
 
 }

@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label for="my-input">Code</label>
-    <input id="code" class="form-control" type="text" name="code">
+    <label for="code">Code</label>
+    <input id="code" class="form-control" type="text">
 </div>
 
 <div class="row">

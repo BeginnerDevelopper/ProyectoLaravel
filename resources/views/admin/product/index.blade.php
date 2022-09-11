@@ -138,7 +138,7 @@
                                             var name = $(this).data("name");   
                                             event.preventDefault();
                                             swal({
-                                                title: 'Estas seguro de eliminar ${name}?',
+                                                title: 'Estas seguro de eliminar el siguiente registro?',
                                                 text: 'No podrá revertir cambios',
                                                 icon: 'warning',
                                                 buttons: true,

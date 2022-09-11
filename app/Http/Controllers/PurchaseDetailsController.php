@@ -14,7 +14,7 @@ class PurchaseDetailsController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

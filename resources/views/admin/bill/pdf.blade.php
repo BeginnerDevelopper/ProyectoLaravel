@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Reporte de compra</title>
+<title>Resumen</title>
 <style>
     body {
         /*position: relative;*/
@@ -56,6 +56,8 @@
         border-collapse: collapse;
         border-spacing: 0;
         margin-bottom: 15px;
+        color: #33FF55;
+        font-size: 15px;
     }
 
     #fac,
@@ -105,34 +107,33 @@
 <body>
   
     <header>
-        {{--  <div id="logo">
+        <!-- {{--  <div id="logo">
             <img src="img/logo.jpg" alt="" id="imagen">
-        </div>  --}}
+        </div>  --}} -->
         <div>
             <table id="datos">
                 <thead>
                     <tr>
-                        <th id="">DATOS DEL PROVEEDOR</th>
+                        <th id="proveedor">FACTURAR A </th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <th>
-                            <p id="proveedor">Nombre: {{$purchase->provider->name}}<br>
-                                {{--  {{$purchase->provider->document_type}}-COMPRA: {{$purchase->provider->document_number}}<br>  --}}
-                                Dirección: {{$purchase->provider->address}}<br>
-                                Teléfono: {{$purchase->provider->phone}}<br>
-                                Email: {{$purchase->provider->email}}</p>
+                            <p id="proveedor">Nombre : {{ $bill->client->name }} </p>
+                            <p>Dirección : {{ $bill->client->address }} </p>
+                            <p>Celular : {{ $bill->client->phone }} </p>
+                            <p>Correo : {{$bill->client->email }} </p>
                         </th>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div id="fact">
-            {{--  <p>{{$purchase->provider->document_type}} COMPRA<br />
-                {{$purchase->provider->document_number}}</p>  --}}
-                <p>NUMERO DE COMPRA<br />
-                    {{$purchase->id}}</p>
+            <!-- {{--  <p>{{$bill->provider->document_type}} VENTA<br />
+                {{$bill->provider->document_number}}</p>  --}}-->
+                <p>NUMERO DE FACTURA<br /> 
+                    {{$bill->id}}</p>
         </div>
     </header>
     <br>
@@ -144,14 +145,13 @@
             <table id="faccomprador">
                 <thead>
                     <tr id="fv">
-                        <th>COMPRADOR</th>
-                        <th>FECHA COMPRA</th>
+                        <th>FECHA</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{{$purchase->user->name}}</td>
-                        <td>{{$purchase->created_at}}</td>
+                        <!-- <td>{{$bill->user->name}}</td> -->
+                        <td class="col-md-6">{{$bill->created_at}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -165,19 +165,22 @@
                     <tr id="fa">
                         <th>CANTIDAD</th>
                         <th>PRODUCTO</th>
-                        <th>PRECIO COMPRA (PEN)</th>
-                        <th>SUBTOTAL (PEN)</th>
+                        <th>PRECIO UNIT.</th>
+                        <th>SUBTOTAL</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($purchaseDetails as $purchaseDetail)
-                    <tr>
-                        <td>{{$purchaseDetail->quantity}}</td>
-                        <td>{{$purchaseDetail->product->name}}</td>
-                        <td>s/ {{$purchaseDetail->price}}</td>
-                        <td>s/ {{number_format($purchaseDetail->quantity*$purchaseDetail->price,3)}}</td>
-                    </tr>
-                    @endforeach
+                @foreach($billDetails as $billDetail)
+                        <tr>
+                             <td>{{$billDetail->product->name}}</td>
+                            <td>s/{{$billDetail->price}}</td>
+                            <td>{{$billDetail->quantity}}</td>
+                            <td>s/{{number_format($billDetail->quantity*$billDetail->price - 
+                            $billDetail->quantity*$billDetail->price * 
+                            $billDetail->discount/100,3)}}
+                            </td>
+                        </tr>
+                            @endforeach
                 </tbody>
                 <tfoot>
                  
@@ -192,10 +195,10 @@
                   
                     <tr>
                         <th colspan="3">
-                            <p align="right">TOTAL IMPUESTO ({{$purchase->tax}}%):</p>
+                            <p align="right">TOTAL IMPUESTO ({{$bill->tax}}%):</p>
                         </th>
                         <td>
-                            <p align="right">s/ {{number_format($subtotal*$purchase->tax/100,2)}}</p>
+                            <p align="right">s/ {{number_format($subtotal*$bill->tax/100,2)}}</p>
                         </td>
                     </tr>
                     <tr>
@@ -203,7 +206,7 @@
                             <p align="right">TOTAL PAGAR:</p>
                         </th>
                         <td>
-                            <p align="right">s/ {{number_format($purchase->total,3)}}<p>
+                            <p align="right">s/ {{number_format($bill->total,3)}}<p>
                         </td>
                     </tr>
                   
@@ -215,9 +218,12 @@
     <br>
     <footer>
         <!--puedes poner un mensaje aqui-->
+        <p>Gracias por tu compra y por elegirnos que vuelvas pronto!</p>
+        <small><i class="fas fa-heart">Morgan Store</i></small>
+
         <div id="datos">
             <p id="encabezado">
-                {{--  <b>{{$company->name}}</b><br>{{$company->description}}<br>Telefono:{{$company->telephone}}<br>Email:{{$company->email}}  --}}
+                <!-- {{--  <b>{{$company->name}}</b><br>{{$company->description}}<br>Telefono:{{$company->telephone}}<br>Email:{{$company->email}}  --}} -->
             </p>
         </div>
     </footer>

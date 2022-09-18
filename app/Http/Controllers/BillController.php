@@ -100,10 +100,11 @@ class BillController extends Controller
         $subtotal = 0;
         $billDetails = $bill->billDetails;
         foreach ($billDetails as $billDetail) {
-            $subtotal += $billDetail->quantity * $billDetail->price;
+            $subtotal += $billDetail->quantity * $billDetail->price - 
+            $billDetail->quantity* $billDetail->price*$billDetail->discount/100;
         }
         $pdf = PDF::loadView('admin.bill.pdf', compact('bill', 'subtotal', 'billDetails'));
-        return $pdf->download('Reporte_de_factura_' . $bill->id . '.pdf');
+        return $pdf->download('Resumen_de_factura_' . $bill->id . '.pdf');
     }
 
     public function print(Bill $bill)

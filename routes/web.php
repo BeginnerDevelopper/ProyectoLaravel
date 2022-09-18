@@ -62,7 +62,7 @@ Route::get('purchases/pdf/{purchase}', 'PurchaseController@pdf')->name('purchase
 
 Route::get('sales/pdf/{sale}', 'SaleController@pdf')->name('sales.pdf');
 
-Route::get('bill/pdf/{bill}', 'BillController@pdf')->name('bills.pdf');
+Route::get('bills/pdf/{bill}', 'BillController@pdf')->name('bills.pdf');
 
 //ruta para imprimir el reporte de ventas
 Route::get('sales/print/{sale}', 'SaleController@print')->name('sales.print');

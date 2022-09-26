@@ -57,6 +57,16 @@
                                         <div class="table-responsive">
                                             <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                                                 <div class="row">
+                                                <div class="col-lg-6 col-12 mx-auto">
+                                                    @if(Session::has('message'))
+                                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                        <strong><i class="fas fa-check-circle">{{Session::get('message')}}</i></strong>
+                                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        </div>
+                                                    @endif
+                                                </div>
                                                     <div class="col-sm-12">
                                                         <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                                                             <thead>
@@ -88,7 +98,7 @@
                                                                         <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
                                                                             <i class="far fa-trash-alt"></i>
                                                                         </button>
-
+                                                                         {!! Form::close() !!}
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach
@@ -103,5 +113,27 @@
 
                                 @endsection
                                 @section('scripts')
-                                {{!! Html::script('melody/js/data-table.js') !!}
+                                {!! Html::script('melody/js/data-table.js') !!}
+                                <script>
+                                           $('.delete-confirm').click(function(event) {
+
+                                            var form = $(this).closest("form");
+                                            var name = $(this).data("name");   
+                                            event.preventDefault();
+                                            swal({
+                                                title: 'Estas seguro de eliminar {{$provider->name}}?',
+                                                text: 'No podrá revertir cambios',
+                                                icon: 'warning',
+                                                buttons: true,
+                                                dangerMode: true,
+                                            })
+                                             
+                                            .then((willDelete) => {
+                                                if (willDelete) {
+                                                    form.submit();
+                                                }
+                                            }); 
+
+                                            }); 
+                                    </script>                                                                            
                                 @endsection

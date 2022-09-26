@@ -18,7 +18,7 @@ class CreateProvidersTable extends Migration
 
             $table->string('name')->unique();
             $table->string('email');
-            $table->string('nit_number');
+            $table->string('nit_number')->unique();
             $table->string('address')->nullable();
             $table->string('phone');
 

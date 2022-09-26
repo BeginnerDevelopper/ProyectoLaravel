@@ -130,7 +130,7 @@
 
                                 @endsection
                                 @section('scripts')
-                                {{!! Html::script('melody/js/data-table.js') !!}
+                                {!! Html::script('melody/js/data-table.js') !!}
                                     <script>
                                            $('.delete-confirm').click(function(event) {
 
@@ -138,7 +138,7 @@
                                             var name = $(this).data("name");   
                                             event.preventDefault();
                                             swal({
-                                                title: 'Estas seguro de eliminar el siguiente registro?',
+                                                title: 'Desea eliminar el siguiente registro {{$producto->name}}?',
                                                 text: 'No podrá revertir cambios',
                                                 icon: 'warning',
                                                 buttons: true,

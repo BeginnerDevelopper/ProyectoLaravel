@@ -29,10 +29,10 @@ class StoreRequest extends FormRequest
 
             'name'=>'string|required|max:255',
             'dni'=>'string|required|unique:clients|min:8|max:10',
-            'nit'=>'nullable|string|unique:clients|min:11|max:11',
+            'nit'=>'nullable|string|unique:clients|min:10|max:11',
             'address'=>'nullable|string|max:255',
-            'phone'=>'string|nullable|unique:clients|min:7|max:10',
-            'email'=>'string|nullable|unique:clients|max:255|email:rfc,dns',
+            'email'=>'string|required|nullable|unique:clients|max:255|email:rfc,dns',
+            'phone'=>'string|required|unique:clients|min:7|max:10',
         
         ];
     }
@@ -40,34 +40,35 @@ class StoreRequest extends FormRequest
     public function messages()
     {
           return [
-            'name.required' => 'Este campo es requerido.',
+            'name.required' => 'El campo nombre es requerido.',
             'name.string' => 'El valor no es correcto.',
             'name.max' => 'Solo se permite 50 carácteres.',
+
+            'email.required' => 'El correo no ha sido ingresado.',
+            'email.email' => 'No es un correo electrónico.',
+            'email.string' => 'El valor no es correcto.',
+            'email.max' => 'Solo se permiten 200 carácteres.',
+            'email.unique' => 'Este email ya se encuentra registrado.',
 
             'dni.required' => 'Este campo es requerido.',
             'dni.string' => 'El valor no es correcto.',
             'dni.max' => 'Solo se permiten 10 carácteres.',
-            'dni.min' => 'Solo se permiten 6 carácteres.',
-            'dni.unique' => 'El NIT ya se encuentra registrado.',
+            'dni.min' => 'Digite la identificación con 10 carácteres como máximo.',
+            'dni.unique' => 'Este documento ya se encuentra registrado.',
 
-            'nit.required' => 'Este campo es requerido.',
-            'nit.string' => 'El valor no es correcto.',
-            'nit.max' => 'Solo se permiten 10 carácteres.',
-            'nit.min' => 'Solo se permiten 10 carácteres.',
+            'nit.string' => 'Este campo es opcional.',
+            'nit.max' => 'Solo se permiten 11 carácteres.',
+            'nit.min' => 'El nit solo permite 10 carácteres.',
             'nit.unique' => 'El NIT ya se encuentra registrado.',
 
             'address.max' => 'Solo se permite 255 carácteres.',
             'address.string' => 'El valor no es válido.',
 
-            'phone.required' => 'Este campo es requerido.',
+            'phone.required' => 'Digite el número celular.',
             'phone.string' => 'Ingrese un valor númerico!.',
+            'phone.min' => 'Solo se permiten de min:10 a máx:11 carácteres .',
             'phone.unique' => 'El número ya está registrado!.',
 
-            'email.required' => 'Este campo es requerido.',
-            'email.email' => 'No es un correo electrónico.',
-            'email.string' => 'El valor no es correcto.',
-            'email.max' => 'Solo se permiten 200 carácteres.',
-            'email.unique' => 'Este email ya se encuentra registrado.',
 
 
          

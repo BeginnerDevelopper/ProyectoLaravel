@@ -40,13 +40,16 @@ class ProviderController extends Controller
 
     public function store(StoreRequest $request)
     {
+        
         Provider::create($request->all());
-        return redirect()->route('providers.index');
+        return redirect()->route('providers.index')->with('message', 'Nuevo proveedor creado');
+
     }
 
  
     public function show(Provider $provider)
     {
+        
         return view('admin.provider.show', compact('provider'));
     }
 

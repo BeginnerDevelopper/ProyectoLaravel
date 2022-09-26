@@ -37,8 +37,9 @@ class ClientController extends Controller
 
     public function store(StoreRequest $request)
     {
+       
         Client:: create($request->all());
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with('message', 'Nuevo cliente creado');
     }
 
  

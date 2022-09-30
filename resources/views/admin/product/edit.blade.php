@@ -31,9 +31,18 @@
                         <div class="d-flex justify-content-between">
                             <h4 class="card-title">Productos</h4>
                         </div>
-
+                        <!-- @if ($errors->any())
+                            <div class="alert alert-warning">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                            </div>
+                        @endif -->
                         {!! Form::model($product,['route' =>['products.update', $product], 'method' => 'PUT', 'files' => true]) !!}
-
+                        @csrf
+                        <!-- @method('PUT') -->
                         <div class="form-group col-md-6 mb-3">
                             <label for="name" class="form-label">Nombre *</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{$product->name}}" required>
@@ -76,7 +85,7 @@
                             <input type="file" name="picture" id="picture" class="dropify" />
                         </div>
                     </div>
-
+                    
                     <button type="submit" class="btn btn-primary mr-2">Actualizar</button>
                     <a href="{{route('products.index')}}" class="btn btn-outline-danger">Cancelar</a>
                     {!! Form::close() !!}
@@ -89,6 +98,6 @@
 
 @endsection
 @section('scripts')
-{{!! Html::script('melody/js/dropify.js') !!}
+{!! Html::script('melody/js/dropify.js') !!}
 
                                 @endsection

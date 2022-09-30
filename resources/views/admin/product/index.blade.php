@@ -57,6 +57,9 @@
                                         <div class="table-responsive">
                                             <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
                                                 <div class="row">
+                                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                                        <a class="btn btn-success ml-auto" href="{{route('export.excel')}}" role="button">Exportar en Excel</a>
+                                                    </div>
                                                     <div class="col-sm-12">
                                                         <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
                                                             <thead>
@@ -87,7 +90,7 @@
                                                                         <a href="{{ route('products.show', $product) }}">{{$product->name}}</a>
                                                                     </td>
                                                                     <td>{{$product->stock}}</td>
-                                                                    <td>{{$product->sell_price}}</td>
+                                                                    <td>{{number_format($product->sell_price),3}}</td>
                                                                     @if($product->status == 'ACTIVE')
                                                                     <td>
                                                                         <a name="status" id="status" class="btn btn-success" href="{{ route('change.status.products', $product) }}" role="button">
@@ -138,7 +141,7 @@
                                             var name = $(this).data("name");   
                                             event.preventDefault();
                                             swal({
-                                                title: 'Desea eliminar el siguiente registro {{$producto->name}}?',
+                                                title: 'Desea eliminar el siguiente registro?',
                                                 text: 'No podrá revertir cambios',
                                                 icon: 'warning',
                                                 buttons: true,

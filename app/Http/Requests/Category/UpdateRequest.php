@@ -35,6 +35,7 @@ class UpdateRequest extends FormRequest
             'name.required' => 'Este campo es requerido.',
             'name.string' => 'El valor no es correcto.',
             'name.max' => 'Solo se permite 50 carácteres.',
+            
             'description.string' => 'El valor no es válido.',
             'description.max' => 'Solo se permite 255 carácteres.',
         ];

@@ -9,6 +9,8 @@ use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Provider;
 use App\Milon\Barcode\DNS1D;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Exports\ProductExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProductController extends Controller
 {
@@ -53,25 +55,28 @@ class ProductController extends Controller
 
     public function store(StoreRequest $request)
     {
+      
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
             $file->move(public_path("/image"), $image_name);
+            $product['image'] = "$image_name";
            
         }
-
-        $product = Product:: create($request->all()+[
-            'image' => $image_name,
+       
+        $product = Product::create($request->all()+[
+                'image' => $image_name,
         ]);
- 
-        if ($request->code == "") {
-            
-            $numero = $product->id;
-            $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
-            $product->update(['code' =>$numeroConCeros]);    
+        
+            if ($request->code == "") {
+                
+                $numero = $product->id;
+                $numeroConCeros = str_pad($numero, 8, "0", STR_PAD_LEFT);
+                $product->update(['code' =>$numeroConCeros]);    
         }
-
+        
         Alert()->success('Producto registrado con éxito');
+        
         
         return redirect()->route('products.index');
         
@@ -147,6 +152,15 @@ class ProductController extends Controller
        }
     }
 
+    public function exportIntoExcel()
+    {
+        return Excel::download(new ProductExport, 'product-list.xlsx');
+    
+    }
+    public function exportIntoCSV()
+    {
+        return Excel::download(new ProductExport, 'product-list.xlsx');
+    }
 
 
 

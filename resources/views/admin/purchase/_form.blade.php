@@ -1,9 +1,11 @@
-<div class="form-group col-md-8">
+<div class="container">
+<div class="row justify-content-start">
+<div class="form-group col-md-5">
     <label for="code">Código de Barras</label>  
     <input id="code" class="form-control" type="text" name="code" disabled>
     <small class="text-muted">Mínimo 8 carácteres</small>
 </div>
-<div class="form-group col-md-6">
+<div class="form-group col-md-5">
     <label for="provider_id">Proveedor</label>
     <select id="provider_id" class="form-control" name="provider_id">
         @foreach($providers as $provider)
@@ -11,6 +13,8 @@
         @endforeach
     </select>
 </div>
+</div>
+<div class="row justify-content-evenly">
 <div class="form-group col-md-6">
     <label for="product_id">Producto</label>
     <select id="product_id" class="form-control select-picker" data-live-search="true" name="product_id">
@@ -28,6 +32,8 @@
         </div>
         <input type="number" class="form-control" name="tax" id="tax" aria-describedby="basic-addon3" value="18">
     </div>
+</div>
+</div>
 </div>
 <div class="form-group col-md-6">
     <div class="mb-3 form-floating">

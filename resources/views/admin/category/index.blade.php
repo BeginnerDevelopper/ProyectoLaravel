@@ -95,7 +95,7 @@
                                                                         <button class="btn btn-outline-danger delete-confirm" type="submit" title="Eliminar">
                                                                             <i class="far fa-trash-alt"></i>
                                                                         </button>
-
+                                                                            {!!Form::close() !!}    
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach

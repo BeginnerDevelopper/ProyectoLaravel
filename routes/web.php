@@ -26,6 +26,9 @@ Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports
 
 Route::post('sales/report_results','ReportController@report_results')->name('report.results');
 
+Route::get('products/export_excel', 'ProductController@exportIntoExcel')->name('export.excel');
+Route::get('products/export_csv', 'ProductController@exportIntoCSV')->name('export.csv');
+
 
 Route::resource('business', 'BusinessController')->names('business')->only([
     'index', 'update'
@@ -76,6 +79,7 @@ Route::get('bills/print/{bill}', 'BillController@print')->name('bills.print');
     Route::get('change_status/products/{product}', 'ProductController@change_status')->name('change.status.products');
     Route::get('change_status/purchases/{purchase}', 'PurchaseController@change_status')->name('change.status.purchases');
     Route::get('change_status/sales/{sale}', 'SaleController@change_status')->name('change.status.sales');
+     Route::get('change_status/bills/{bill}', 'BillController@change_status')->name('change.status.bills');
 
     Route::resource('users', 'UserController')->names('users');
     //Rol controlador

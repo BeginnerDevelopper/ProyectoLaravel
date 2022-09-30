@@ -2,7 +2,7 @@
 @section('title','Registrar Cliente')
 @section('styles')
 @endsection
-@section('options')
+@section('options')km,
 @endsection
 @section('preference')
 @endsection

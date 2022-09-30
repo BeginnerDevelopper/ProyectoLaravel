@@ -25,6 +25,14 @@ class BillController extends Controller
     {
         //evita que se pueda acceder a las rutas sin estar logueado
         $this->middleware('auth');
+        
+                $this->middleware('can:bills.create')->only(['create', 'store']); 
+                $this->middleware('can:bills.index')->only(['index']); 
+                $this->middleware('can:bills.show')->only(['show']); 
+
+                $this->middleware('can:change.status.sales')->only(['change_status']); 
+                $this->middleware('can:bills.pdf')->only(['pdf']); 
+                $this->middleware('can:bills.print')->only(['print']); 
     }
 
     public function index()

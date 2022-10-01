@@ -42,6 +42,7 @@ class Sale extends Model
 
     public function my_sale($request)
     {
+        
         $sale = self::create($request->all()+[
             'user_id'=> Auth::user()->id,
             'sale_date'=>Carbon::now('America/Lima'),

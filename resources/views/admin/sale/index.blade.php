@@ -47,73 +47,74 @@
                             </div>
                         </div>
                     </div>
-                        <div class="table-responsive">
-                            <table id="categories_listing" class="table">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="table-responsive">
-                                            <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
-                                                <div class="row">
-                                                    <div class="col-sm-12">
-                                                        <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th>Id</th>
-                                                                    <th>Fecha</th>
-                                                                    <th>Total</th>
-                                                                    <th>Estado</th>
-                                                                    <th style="width:150px">Acciones</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                @foreach($sales as $sale)
-                                                                <tr>
-                                                                    <th scope="row">
-                                                                        <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
-                                                                    </th>
-                                                                    <td>{{$sale->sale_date}}</td>
-                                                                    <td>{{number_format($sale->total, 3)}}</td>
-                                                                    @if($sale->status == 'VALID')
-                                                                    <td>
-                                                                        <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" role="button">
-                                                                            Activo <i class="fas fa-check"></i></a>
-                                                                        </a>
+                    <div class="table-responsive">
+                        <table id="categories_listing" class="table">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="table-responsive">
+                                        <div id="order-listing_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4 no-footer">
+                                            <div class="row">
+                                             
+                                                <div class="col-sm-12">
+                                                    <table id="order-listing" class="table dataTable no-footer" role="grid" aria-describedby="order-listing_info">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Id</th>
+                                                                <th>Fecha</th>
+                                                                <th>Total</th>
+                                                                <th>Estado</th>
+                                                                <th style="width:150px">Acciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach($sales as $sale)
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    <a href="{{route('sales.show', $sale)}}">{{$sale->id}}</a>
+                                                                </th>
+                                                                <td>{{$sale->sale_date}}</td>
+                                                                <td>{{number_format($sale->total)}}</td>
+                                                                @if($sale->status == 'VALID')
+                                                                <td>
+                                                                    <a class="jsgrid-button btn btn-success" href="{{route('change.status.sales', $sale)}}" role="button">
+                                                                        Activo <i class="fas fa-check"></i></a>
+                                                                    </a>
 
-                                                                    </td>
-                                                                    @else
-                                                                    <td>
-                                                                        <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" role="button">
-                                                                            Cancelado<i class="fas fa-times"></i></a>
-                                                                    </td>
-                                                                    @endif
+                                                                </td>
+                                                                @else
+                                                                <td>
+                                                                    <a class="jsgrid-button btn btn-danger" href="{{route('change.status.sales', $sale)}}" role="button">
+                                                                        Cancelado<i class="fas fa-times"></i></a>
+                                                                </td>
+                                                                @endif
 
-                                                                    <td style="width: 100px;">
-                                                                        <!-- {!! Form::open(['route'=>['sales.destroy', $sale],
+                                                                <td style="width: 100px;">
+                                                                    <!-- {!! Form::open(['route'=>['sales.destroy', $sale],
                                                                         'method'=>'DELETE']) !!} -->
 
-                                                                        <!-- <a class="btn btn-success" href="{{route('sales.edit', $sale)}}" title="Editar">
+                                                                    <!-- <a class="btn btn-success" href="{{route('sales.edit', $sale)}}" title="Editar">
                                                                             <i class="far fa-edit"></i>
                                                                         </a> -->
 
-                                                                        <!-- <button class="btn btn-danger jsgrid-button delete-confirm" type="submit" title="Eliminar">
+                                                                    <!-- <button class="btn btn-danger jsgrid-button delete-confirm" type="submit" title="Eliminar">
                                                                             <i class="far fa-trash-alt"></i>
                                                                         </button>  -->
-                                                                        <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
-                                                                        <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
-                                                                        <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
-                                                                    </td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                                    <a href="{{route('sales.pdf', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-file-pdf"></i></a>
+                                                                    <a href="{{route('sales.print', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="fas fa-print"></i></a>
+                                                                    <a href="{{route('sales.show', $sale)}}" class="jsgrid-button jsgrid-edit-button"><i class="far fa-eye"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                            @endforeach
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                @endsection
-                                @section('scripts')
-                                {!! Html::script('melody/js/data-table.js') !!}
-                                @endsection
+                            @endsection
+                            @section('scripts')
+                            {!! Html::script('melody/js/data-table.js') !!}
+                            @endsection

@@ -80,16 +80,16 @@
                             <input type="decimal(9,2)" class="form-control" name="sell_price" id="sell_price"value="{{old('sell_price')}}">
                         </div>
                         
-                       <div class="card-body">
+                       <!-- <div class="card-body">
                             <h4 class="card-title d-flex">Imagen del Producto<b class="text-danger">*</b>
                                 <small class="ml-auto align-self-end">
                                     <p href="#" class="font-weight-light" target="_blank">Seleccionar archivo</p>
                                 </small>
                             </h4>
                             <input type="file" name="picture" id="picture" class="dropify" />
-                        </div>
+                        </div>-->
 
-                       
+                        <input type="file" name="dato" id="dato">
                     </div>
 
                     <button type="submit" class="btn btn-primary mr-2">Registrar</button>

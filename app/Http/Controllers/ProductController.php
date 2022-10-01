@@ -55,13 +55,21 @@ class ProductController extends Controller
 
     public function store(StoreRequest $request)
     {
+       
       
-        if ($request->hasFile('picture')) {
+        /*if ($request->hasFile('picture')) {
             $file = $request->file('picture');
             $image_name = time().'_'.$file->getClientOriginalName();
+            
             $file->move(public_path("/image"), $image_name);
             $product['image'] = "$image_name";
            
+        }*/
+
+
+        if ($imagen = $request->file('picture')) {
+            $image_name = time().'_'.$imagen->getClientOriginalName();
+            $imagen->move(public_path("/image"), $image_name); 
         }
        
         $product = Product::create($request->all()+[

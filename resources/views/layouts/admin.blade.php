@@ -29,7 +29,7 @@
                     <img src="{{asset('image/icono.png')}}"
                         alt="logotipoempresa" /></a>
                 <a class="navbar-brand brand-logo-mini" href="#">
-                    <img src="{{asset('melody/images/faces/face2.jpg')}}"
+                    <img src="{{asset('melody/images/faces/logo.svg')}}"
                         alt="logo"/></a>
             </div>
             <div class="navbar-menu-wrapper d-flex align-items-stretch">
@@ -54,7 +54,7 @@
                     @yield('create')
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="{{asset('melody/images/faces/face2.jpg')}}" alt="profile" />
+                            <img src="{{asset('melody/images/faces/face16.jpg')}}" alt="profile" />
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown"
                             aria-labelledby="profileDropdown">

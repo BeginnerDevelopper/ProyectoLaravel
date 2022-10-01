@@ -95,7 +95,7 @@
             if (product_id != "" && quantity != "" && quantity > 0 && price != "") {
                 subtotal[cont] = quantity * price;
                 total = total + subtotal[cont];
-                var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa fa-times"></i></button></td><td><input name="product_id[]" value="' + product_id + '" type="hidden">' + producto + '</td><td><input name="price[]" value="' + price + '" type="hidden"><input class="form-control" id="price[]" value="' + price + '" type="number" disabled></td><td><input type="hidden" class="form-control" name="quantity[]" value="' + quantity + '"><input type="number" class="form-control" value="' + quantity + '" disabled></td><td align="right">s/' + subtotal[cont] + '</td></tr>'
+                var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');"><i class="fa fa-times"></i></button></td><td><input name="product_id[]" value="' + product_id + '" type="hidden">' + producto + '</td><td><input name="price[]" value="' + price + '" type="hidden"><input class="form-control" id="price[]" value="' + price + '" type="decimal(8,2)" disabled></td><td><input type="hidden" class="form-control" name="quantity[]" value="' + quantity + '"><input type="number" class="form-control" value="' + quantity + '" disabled></td><td align="right">s/' + subtotal[cont] + '</td></tr>'
                 cont++, // cont  = cont + 1;
                 limpiar();
                 totales();

@@ -66,7 +66,7 @@
                                             <p align="right">TOTAL IMPUESTO ({{$sale->tax}}%)</p>
                                         </th>
                                         <th colspan="4">
-                                            <p align="right">s/{{number_format($subtotal*$sale->tax/100,2)}}</p>
+                                            <p align="right">s/{{number_format($subtotal*$sale->tax/100)}}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -75,7 +75,7 @@
                                         </th>
                                         <th colspan="4">
                                             <span ></span>
-                                            <p align="right">s/{{number_format($sale->total,3)}}</p>
+                                            <p align="right">s/{{number_format($sale->total)}}</p>
                                         </th>
                                     </tr>
                                     </tfoot>
@@ -83,12 +83,12 @@
                                         @foreach($saleDetails as $saleDetail)
                                         <tr>
                                             <td>{{$saleDetail->product->name}}</td>
-                                            <td>s/ {{$saleDetail->price}}</td>
+                                            <td>$ {{number_format($saleDetail->price)}}</td>
                                             <td>{{$saleDetail->discount}} %</td>
                                             <td>{{$saleDetail->quantity}}</td>
-                                            <td>s/{{number_format($saleDetail->quantity*$saleDetail->price - 
+                                            <td>$ {{number_format($saleDetail->quantity*$saleDetail->price - 
                                                 $saleDetail->quantity*$saleDetail->price * 
-                                                $saleDetail->discount/100,3)}}
+                                                $saleDetail->discount/100)}}
                                             </td>
                                        
                                         

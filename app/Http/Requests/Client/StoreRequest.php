@@ -53,7 +53,7 @@ class StoreRequest extends FormRequest
             'dni.required' => 'Este campo es requerido.',
             'dni.string' => 'El valor no es correcto.',
             'dni.max' => 'Solo se permiten 10 carácteres.',
-            'dni.min' => 'Digite la identificación con 10 carácteres como máximo.',
+            'dni.min' => 'Digite la identificación con min: 8 y máx: 10 de carácteres.',
             'dni.unique' => 'Este documento ya se encuentra registrado.',
 
             'nit.string' => 'Este campo es opcional.',

@@ -64,7 +64,7 @@
                                             <p align="right">SUBTOTAL:</p>
                                         </th>
                                         <th>
-                                            <p align="right">${{number_format($subtotal,3)}}</p>
+                                            <p align="right">${{number_format($subtotal),3}}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -72,7 +72,7 @@
                                             <p align="right">TOTAL IMPUESTO ({{$purchase->tax}}%):</p>
                                         </th>
                                         <th>
-                                            <p align="right">${{number_format($subtotal*$purchase->tax/100,2)}}</p>
+                                            <p align="right">${{number_format($subtotal*$purchase->tax/100)}}</p>
                                         </th>
                                     </tr>
                                     <tr>
@@ -80,7 +80,7 @@
                                             <p align="right">TOTAL:</p>
                                         </th>
                                         <th>
-                                            <p align="right">${{number_format($purchase->total,3)}}</p>
+                                            <p align="right">${{number_format($purchase->total)}}</p>
                                         </th>
                                     </tr>
                     
@@ -89,9 +89,9 @@
                                     @foreach($purchaseDetails as $purchaseDetail)
                                     <tr>
                                         <td>{{$purchaseDetail->product->name}}</td>
-                                        <td>${{number_format($purchaseDetail->price,3)}}</td>
+                                        <td>${{number_format($purchaseDetail->price)}}</td>
                                         <td>{{$purchaseDetail->quantity}}</td>
-                                        <td>${{number_format($purchaseDetail->quantity*$purchaseDetail->price,3)}}</td>
+                                        <td>${{number_format($purchaseDetail->quantity*$purchaseDetail->price)}}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>

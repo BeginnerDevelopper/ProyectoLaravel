@@ -64,8 +64,8 @@
         </div>
     </div>
 
- <!-- Modal -->
- <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModal-2" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModal-2" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header bg-dark">
@@ -74,33 +74,54 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-                {!! Form::open(['route' => 'clients.store', 'method' => 'POST' ]) !!}
-
+                    <!-- <div class="alert alert-success">
+                    @if(Session::has('success'))
+                            {{Session::get('success')}}
+                    @endif
+                    </div> -->
+               
+                <form action="{{action('ClientController@modalCliente')}}" method="POST" >
+                @csrf
                 <div class="modal-body">
                     <div class="form-group col-md-12 mb-3">
-                        <label for="name" class="form-label">Nombre *</label>
-                        <input type="text" class="form-control" name="name" id="name" aria-describedby="helpId" required>
+                        <label for="name" class="form-label">Nombre <b class="text-danger">*</b></label>
+                        <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" aria-describedby="helpId">
+                        @error('name')
+                        <strong>Este campo es requerido</strong>
+                        @enderror
                     </div>
                     <div class="form-group col-md-12 mb-3">
-                        <label for="dni" class="form-label">Identificación *</label>
-                        <input type="number" class="form-control" name="dni" id="dni" aria-describedby="helpId">
+                        <label for="email" class="form-label">Correo electrónico <b class="text-danger">*</b></label>
+                        <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" aria-describedby="helpId">
+                        @error('email')
+                        <strong>Este campo es requerido</strong>
+                        @enderror
                     </div>
                     <div class="form-group col-md-12 mb-3">
-                        <label for="phone" class="form-label">Telefono/Celular *</label>
-                        <input type="number" class="form-control" name="phone" id="phone" aria-describedby="helpId">
+                        <label for="dni" class="form-label">Identificación <b class="text-danger">*</b></label>
+                        <input type="number" class="form-control @error('dni') is-invalid @enderror" name="dni" id="dni" aria-describedby="helpId">
+                        @error('dni')
+                        <strong>Este campo es requerido - Digite min:8 máx:10 </strong>
+                        @enderror
                     </div>
+                    <div class="form-group col-md-12 mb-3">
+                        <label for="phone" class="form-label">Telefono/Celular <b class="text-danger">*</b></label>
+                        <input type="number" class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" aria-describedby="helpId">
+                        @error('phone')
+                        <strong>Este campo es requerido - Digite min: 7 máx: 10</strong>
+                        @enderror
+                    </div> 
 
                     <input type="hidden" name="sale" value="1">
 
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-outline-primary">Registrar</button>
+                    <button type="submit" class="btn btn-outline-info">Registrar</button>
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
                 </div>
 
-                {!!Form::close()!!}
+                </form>
 
             </div>
         </div>
@@ -133,8 +154,9 @@
 
         function mostrarValores() {
             datosProducto = document.getElementById('product_id').value.split('_');
-            $("#price").val(datosProducto[2]);
-            $("#stock").val(datosProducto[1]);
+            $("#code").val(datosProducto[1]);
+            $("#stock").val(datosProducto[2]);
+            $("#price").val(datosProducto[3]);
         }
 
         var product_id = $('#product_id');
@@ -239,12 +261,12 @@
         }
 
         function totales() {
-            $("#total").html("$" + total.toFixed(3));
+            $("#total").html("$" + total.toFixed(0));
             total_impuesto = total * impuesto / 100;
             total_pagar = total + total_impuesto;
             $("#total_impuesto").html("$" + total_impuesto.toFixed(2));
-            $("#total_pagar_html").html("$" + total_pagar.toFixed(3));
-            $("#total_pagar").val(total_pagar.toFixed(3));
+            $("#total_pagar_html").html("$" + total_pagar.toFixed(0));
+            $("#total_pagar").val(total_pagar.toFixed(0));
         }
 
 

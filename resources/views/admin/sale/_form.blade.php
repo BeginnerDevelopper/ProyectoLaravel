@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label for="code">Code</label>
-    <input id="code" class="form-control" type="text">
+    <label for="code">Codigo de Barras</label>
+    <input id="code" class="form-control" type="text" disabled>
 </div>
 
 <div class="row">
@@ -18,7 +18,7 @@
         <select id="product_id" class=" form-control selectpicker" data-live-search="true" name="product_id">
             <option value="" disabled>Seleccione un producto</option>
             @foreach($products as $product)
-            <option value="{{$product->id}}_{{$product->stock}}_{{$product->sell_price}}">{{$product->name}}</option>
+            <option value="{{$product->id}}_{{$product->code}}_{{$product->stock}}_{{$product->sell_price}}">{{$product->name}}</option>
             @endforeach
         </select>
     </div>
@@ -44,7 +44,7 @@
     <div class="form-group col-md-5">
         <div class="mb-3 form-floating">
             <label for="price">Precio de venta</label>
-            <input type="number" name="price" id="price" class="form-control" disabled>
+            <input type="decimal(9,2)" name="price" id="price" class="form-control" disabled>
         </div>
     </div>
     <div class="form-group col-3">

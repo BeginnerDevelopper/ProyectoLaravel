@@ -26,6 +26,10 @@ Route::get('sales/reports_date', 'ReportController@reports_date')->name('reports
 
 Route::post('sales/report_results','ReportController@report_results')->name('report.results');
 
+//Ruta del modal para registrar clientes desde la pag ventas
+Route::post('modalCliente','ClientController@modalCliente')->name('modalCliente');
+
+
 Route::get('products/export_excel', 'ProductController@exportIntoExcel')->name('export.excel');
 Route::get('products/export_csv', 'ProductController@exportIntoCSV')->name('export.csv');
 
@@ -57,7 +61,6 @@ Route::resource('bills', 'BillController')->names('bills');
 //Route::resource('purchases', 'PurchaseController')->names('purchases')->except([
 //     'edit', 'update', 'destroy'
 // ]);;
-
 
 
 
@@ -117,4 +120,6 @@ Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 

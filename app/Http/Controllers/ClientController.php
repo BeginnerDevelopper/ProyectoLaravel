@@ -42,6 +42,14 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('message', 'Nuevo cliente creado');
     }
 
+        //Funcion para crear clientes com omodal en ventas
+    public function modalCliente(StoreRequest $request)
+    {
+       
+        Client::create($request->all());
+        return redirect()->route('sales.create');
+    }
+
  
     public function show(Client $client)
     {

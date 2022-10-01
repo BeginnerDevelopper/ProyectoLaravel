@@ -49,6 +49,7 @@ class SaleController extends Controller
     {   
         $clients = Client::get();
         $products = Product::get();
+        
         return view('admin.sale.create', compact('clients', 'products'));
 
     }
@@ -60,6 +61,8 @@ class SaleController extends Controller
         Alert::toast('Venta realizada con éxito', 'success');
         return redirect()->route('sales.index');
     }
+
+  
 
  
     public function show(Sale $sale)

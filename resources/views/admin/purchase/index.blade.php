@@ -85,7 +85,7 @@
                                                                         <a href="{{route('purchases.show', $purchase)}}">{{$purchase->id}}</a>
                                                                     </th>
                                                                     <td>{{$purchase->purchase_date}}</td>
-                                                                    <td>{{number_format($purchase->total, 3)}}</td>
+                                                                    <td>{{number_format($purchase->total),3}}</td>
                                                                     @if($purchase->status == 'VALID')
                                                                     <td>
                                                                         <a class="btn btn-success" href="{{route('change.status.purchases', $purchase)}}" role="button">
